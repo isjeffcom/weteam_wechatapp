@@ -1,0 +1,7 @@
+/* pages/team/team.wxss */
+
+.team-single{
+  background: #999;
+  height: 50px;
+  margin-bottom: 20px;
+}

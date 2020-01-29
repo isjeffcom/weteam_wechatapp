@@ -1,0 +1,34 @@
+<!--pages/searchuser/searchuser.wxml-->
+<view id="searchuser">
+
+
+
+  <view id="searchuser-inner">
+
+    <view class="search-cont">
+      <text>输入对方学号</text>
+      <input style="border-bottom: 1px solid #333;" type="text" bindinput="sVal" />
+      <text>（基于数据保护原因，对方只有使用过本小程序才能被搜索）</text>
+    </view>
+
+    <button bindtap="search">搜索</button>
+
+
+    <view class="search-res">
+      <view wx:for="{{ allResult }}" 
+            wx:for-index="idx"
+            wx:for-item="item"
+            data-id="{{item.id}}"
+            data-n="{{item.name}}"
+            data-img="{{item.img}}"
+            bindtap="select"
+            class="search-res-single">
+        {{item.name}}
+      </view>
+    </view>
+
+  </view>
+
+  <view bindtap="close">关闭</view>
+
+</view>

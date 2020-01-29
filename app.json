@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/calmain/calmain",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/connect/connect",
+    "pages/team/team",
+    "pages/newgroup/newgroup"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/calmain/calmain",
+        "text": "",
+        "iconPath": "assets/imgs/calendar.png",
+        "selectedIconPath": "assets/imgs/calendar_s.png"
+      },
+      {
+        "pagePath": "pages/team/team",
+        "text": "",
+        "iconPath": "assets/imgs/team.png",
+        "selectedIconPath": "assets/imgs/team_s.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,37 @@
+
+<view id="all">
+
+  <view class="title">
+
+    <view class="title-left">
+      <text class="title-text-1">我的小组</text>
+    </view>
+
+    <view class="title-right">
+      <text class="title-text-add" bindtap="toNew">+新建</text>
+    </view>
+  
+  </view>
+
+  <view id="teams-cont">
+
+    <view wx:if="{{ allGroups.length < 1 }}">
+
+      <text>还没加入任何小组</text>
+
+    </view>
+
+    <view wx:for="{{ allGroups }}" 
+          wx:for-index="idx" 
+          wx:for-item="item" 
+          bindtap="toDetail"
+          class="team-single">
+      {{item.name}}
+    </view>
+
+  </view>
+
+  
+
+</view>
+

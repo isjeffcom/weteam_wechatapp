@@ -1,0 +1,56 @@
+<!--pages/newgroup/newgroup.wxml-->
+
+<view id="all">
+
+  <view class="title">
+
+    <view class="title-left">
+      <text class="title-text-1">创建小组</text>
+    </view>
+
+  </view>
+
+
+  <view class="name-cont">
+    <text>请输入小组名称 \n</text>
+    <input type="text" bindinput="inpName"/>
+    <text wx:if="{{ nameAlert }}" style="color: #ff0000">1-12位中英文和数字</text>
+  </view>
+
+  <view class="members-cont">
+
+    <view wx:for="{{ members }}" 
+          wx:for-index="idx"
+          wx:for-item="item" 
+          data-id="{{item.id}}"
+          bindtap="removeMember"
+          class="team-single">
+      
+      <view class="members-img">
+        <image src="{{ item.img }}" mode="aspectFill"></image>
+      </view>
+
+      {{item.name}}
+    </view>
+
+    <button bindtap="tapToOverlay">添加小组成员</button>
+  </view>
+
+  <view class="form-submit">
+    <view 
+      class="form-submit-btn" 
+      style="background: {{ btn_style }}" 
+      bindtap="submit">
+      创建
+    </view>
+  </view>
+
+  <view id="searchOverlay" wx:if="{{searchOverlay}}">
+    <search
+      bind:close="tapCloseOverlay"
+      bind:selected="addMember"
+    ></search>
+  </view>
+  
+
+</view>

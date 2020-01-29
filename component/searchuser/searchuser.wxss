@@ -1,0 +1,30 @@
+/* pages/searchuser/searchuser.wxss */
+
+#searchuser{
+  position: fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.1);
+}
+
+#searchuser-inner{
+  position: absolute;
+  top: 50px;
+  width: 90%;
+  height: 50%;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fafafa;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 4px;
+}
+
+.search-res-single{
+  width: 100%;
+  height: 30px;
+  background: rgba(0,0,0,0.2);
+  margin-bottom: 16px;
+}

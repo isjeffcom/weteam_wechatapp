@@ -1,0 +1,17 @@
+<!--pages/connect/connect.wxml-->
+
+<view class="connect-window">
+  <view class="cw-username">
+    <text>请输入UoE学号 \n</text>
+    <text>s</text>
+    <input id="stuNumInput" type="number" bindinput="inpStuNum" auto-focus/>
+    <text>@ed.ac.uk \n</text>
+  </view>
+  
+  <view class="cw-password">
+    <text>请输入MyEd登录密码 \n</text>
+    <input type="password" bindinput="inpPsw"/>
+  </view>
+
+  <button bindtap="toConnect">连接MyEd账户</button>
+</view>

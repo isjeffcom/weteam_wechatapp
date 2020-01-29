@@ -1,0 +1,18 @@
+<!--pages/calendar/calmain.wxml-->
+<calendar
+  calendarConfig="{{calendarConfig}}"
+  bind:onTapDay="onTapDay"
+  bind:afterTapDay="afterTapDay"
+  bind:onSwipe="onSwipe"
+  bind:whenChangeWeek="whenChangeWeek"
+  bind:whenChangeMonth="whenChangeMonth"
+  bind:afterCalendarRender="afterCalendarRender"
+></calendar>
+
+
+<button bindtap="toWeek">切换</button>
+<button bindtap="update">更新</button>
+
+<view wx:for="{{ currentEvtArr }}" wx:for-index="idx" wx:for-item="item">
+  {{item.startTime}} to {{item.endTime}} \n: {{item.name}}
+</view>

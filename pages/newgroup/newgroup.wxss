@@ -1,0 +1,12 @@
+/* pages/newgroup/newgroup.wxss */
+
+.members-img{
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+}
+
+.members-img image{
+  width: 30px;
+  height: 30px;
+}
