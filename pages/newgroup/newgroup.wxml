@@ -1,10 +1,10 @@
 <!--pages/newgroup/newgroup.wxml-->
-
+<titlebar mode="side" position="relative" color="#ffffff" heightOffset="30" nav="back"></titlebar>
 <view id="all">
 
-  <view class="title">
+  <view class="newg-title">
 
-    <view class="title-left">
+    <view class="newg-title-left">
       <text class="title-text-1">创建小组</text>
     </view>
 
@@ -12,28 +12,33 @@
 
 
   <view class="name-cont">
-    <text>请输入小组名称 \n</text>
-    <input type="text" bindinput="inpName"/>
+    <input placeholder="请输入小组名称" type="text" bindinput="inpName"/>
     <text wx:if="{{ nameAlert }}" style="color: #ff0000">1-12位中英文和数字</text>
   </view>
 
   <view class="members-cont">
 
-    <view wx:for="{{ members }}" 
-          wx:for-index="idx"
-          wx:for-item="item" 
-          data-id="{{item.id}}"
-          bindtap="removeMember"
-          class="team-single">
+    <view 
+      wx:for="{{ members }}" 
+      wx:for-index="idx"
+      wx:for-item="item" 
+      data-id="{{item.id}}"
+      bindtap="removeMember"
+      class="team-single">
       
       <view class="members-img">
         <image src="{{ item.img }}" mode="aspectFill"></image>
       </view>
 
-      {{item.name}}
+      <view class="members-name">
+        <text>{{item.name}}</text>
+      </view>
+
     </view>
 
-    <button bindtap="tapToOverlay">添加小组成员</button>
+    <view class="members-add" bindtap="tapToOverlay">
+      <view class="members-add-text"> + 添加小组成员</view>
+    </view>
   </view>
 
   <view class="form-submit">

@@ -1,4 +1,6 @@
+<wxs src="./mems.wxs" module="mems" />
 
+<titlebar mode="side" color="#ffffff" heightOffset="25"></titlebar>
 <view id="all">
 
   <view class="title">
@@ -24,9 +26,21 @@
     <view wx:for="{{ allGroups }}" 
           wx:for-index="idx" 
           wx:for-item="item" 
+          wx:key="idx"
+          data-id="{{ item.id }}"
+          data-n="{{ item.name }}"
+          data-uids="{{ item.members }}"
+          data-code="{{ item.code }}"
           bindtap="toDetail"
           class="team-single">
-      {{item.name}}
+
+        <view class="team-single-name">{{ item.name }}</view>
+        <view class="team-single-mems">有{{ mems.count(item.members) }}位成员</view>
+      
+    </view>
+
+    <view class="team-list-end">
+      <view class="team-list-end-text">END</view>
     </view>
 
   </view>

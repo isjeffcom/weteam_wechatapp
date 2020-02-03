@@ -81,6 +81,15 @@ function getTT(){
   }
 }
 
+function getGTT(gid){
+  var tt = wx.getStorageSync("data_gtt_"+gid)
+  if (tt) {
+    return tt
+  } else {
+    return false
+  }
+}
+
 function getName(){
   var tt = wx.getStorageSync("data_n")
   if (tt) {
@@ -141,7 +150,6 @@ function checkInput(str) { 
 
   var p = new RegExp("[^[\u4e00-\u9fa5_a-zA-Z0-9]+$");
   if (p.test(str)) {
-    console.log("cc")
     return true;
 　}
 　return false;
@@ -157,12 +165,47 @@ function checkInputNumOnly (str) {
   }
 }
 
+function constURLParam (obj) {
+  var str = "?"
+  for(var i=0;i<obj.length;i++){
+    str = str + obj[i].key + "=" + obj[i].val
+    if(i != obj.length - 1){
+      str = str + "&"
+    }
+  }
+
+  return str
+}
+
+
+
+
+function allToInt(arr) {
+  var res = []
+  for (var i = 0; i < arr.length; i++) {
+    res[i] = parseInt(arr[i])
+  }
+
+  return res
+}
+
+function whereInArr(target, arr){
+  
+  for(var i=0;i<arr.length;i++){
+    if(target == arr[i]){
+      return i
+    }
+  }
+  return false
+}
+
 module.exports = {
   formatTime: formatTime,
   checkLogin: checkLogin,
   getToken: getToken,
   getUUID: getUUID,
   getTT: getTT,
+  getGTT: getGTT,
   getName: getName,
   getImg: getImg,
   timeEvtMatcher: timeEvtMatcher,
@@ -170,6 +213,9 @@ module.exports = {
   getSNum: getSNum,
   getPsw: getPsw,
   getGroups: getGroups,
+  allToInt: allToInt,
+  whereInArr: whereInArr,
   checkInput: checkInput,
   checkInputNumOnly: checkInputNumOnly,
+  constURLParam: constURLParam,
 }

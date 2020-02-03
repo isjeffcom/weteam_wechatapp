@@ -69,9 +69,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/team/team",
-					"pathName": "pages/team/team",
+					"id": 2,
+					"name": "pages/group/group",
+					"pathName": "pages/group/group",
 					"query": "",
 					"scene": null
 				},
@@ -80,6 +80,48 @@
 					"name": "pages/newgroup/newgroup",
 					"pathName": "pages/newgroup/newgroup",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/groupdetail/groupdetail",
+					"pathName": "pages/groupdetail/groupdetail",
+					"query": "gid=26&uids=10,12&gname=DMSP Group",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/caltestpage/caltestpage",
+					"pathName": "pages/caltestpage/caltestpage",
+					"query": "gid=26",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/join/join",
+					"pathName": "pages/join/join",
+					"query": "gid=16&gcode=1014&n=jianfeng wu",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "group to join entrance",
+					"pathName": "pages/group/group",
+					"query": "tojoin=26",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "gid=26&uids=10,12&gname=DMSP Group",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/connect/connect",
+					"pathName": "pages/connect/connect",
+					"query": "gid=26&uids=10,12&gname=DMSP Group",
 					"scene": null
 				}
 			]

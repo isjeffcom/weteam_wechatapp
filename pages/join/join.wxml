@@ -1,0 +1,47 @@
+<!--pages/join/join.wxml-->
+<view id="join">
+
+  <titlebar mode="center" position="relative" color="#ffffff" heightOffset="30"></titlebar>
+
+  <view class="invi">
+    <view class="invi-inner">
+      <view class="invi-ivtor">
+
+        <!--view class="invi-ivtor-img">
+          <image class="invi-ivtor-img-img" src="{{uimg}}"></image>
+        </view-->
+
+        <view class="invi-ivtor-name">
+          <text>{{ uname }}</text>
+        </view>
+
+        <view class="invi-ivtor-line">
+          <text>邀请你加入小组</text>
+        </view>
+
+      </view>
+
+      <view class="invi-group">
+
+        <view class="invi-group-icon">
+          <image class="invi-group-icon-img" src="../../assets/imgs/team.svg"></image>
+        </view>
+
+        <view class="invi-group-name">
+          <text>{{ groupData.name }}</text>
+        </view>
+
+        <view class="invi-group-line">
+          <text>与其他{{ groupData.memsCount }}位成员共享日程 \n 未来享受更多协作功能</text>
+        </view>
+      </view>
+
+      <view class="invi-join">
+        <view class="invi-join-btn-cont">
+          <button class="invi-join-btn" bindtap="joinCheck">加入小组</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

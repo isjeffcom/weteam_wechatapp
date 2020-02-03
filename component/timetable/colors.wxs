@@ -1,0 +1,23 @@
+var colors = [
+  'rgba(2, 119, 249, 1)',
+  'rgba(255, 99, 132, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)'
+]
+var setColor = function (index) {
+
+  if(!index){
+    return colors[0]
+  }
+
+  if(index > colors.length){
+    index = index % colors.length
+  }
+
+  return colors[index];
+}
+module.exports = {
+  setColor: setColor,
+};

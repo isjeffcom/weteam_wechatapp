@@ -1,4 +1,5 @@
 var util = require('../../utils/util.js')
+var request = require('../../utils/request.js')
 //index.js
 //获取应用实例
 const app = getApp()
@@ -18,6 +19,7 @@ Page({
     })
   },
   onLoad: function () {
+    wx.hideShareMenu()
     /*if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -45,7 +47,6 @@ Page({
       })
     }*/
     var check = util.checkLogin()
-    console.log(check.res)
     if (check.res){
       this.navByStatus(check.status)
     } else {
@@ -54,9 +55,25 @@ Page({
   },
   getUserInfo: function(e) {
 
+    
+
     var that = this
+
+    wx.showLoading({
+      title: '正在登陆',
+    })
+
+    
     
     app.globalData.userInfo = e.detail.userInfo
+
+    if (!app.globalData.userInfo) {
+      wx.showModal({
+        title: '请授权微信登录',
+        content: '登录是必须的。您可以到：「右上角」 - 「关于」 - 「右上角」 - 「设置」中重新开启授权'
+      })
+      return
+    }
 
     this.setData({
       userInfo: e.detail.userInfo,
@@ -68,7 +85,7 @@ Page({
       success: res => {
 
         wx.request({
-          url: "http://localhost:3000/oauth/wechat",
+          url: request.getBaseUrl() + "/oauth/wechat",
           method: "GET",
           data: {
             code: res.code,
@@ -127,11 +144,19 @@ Page({
             
           },
           fail: function (err) {
+            wx.hideLoading()
+            wx.showToast({
+              title: '网络错误，请重试',
+              icon: "none"
+            })
             console.log(err)
           }
 
         })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      },
+      fail: res => {
+        console.log("reject")
       }
     })
   },
@@ -151,17 +176,38 @@ Page({
   },
 
   navByStatus: function (status) {
+    
 
     if (status == 1) {
-      wx.redirectTo({
-        url: '/pages/connect/connect',
-      })
+
+      if (this.options.tojoin) {
+        wx.redirectTo({
+          url: '/pages/connect/connect?tojoin=' + this.options.tojoin,
+        })
+        return
+      } else {
+        wx.redirectTo({
+          url: '/pages/connect/connect',
+        })
+        return
+      }
+
     }
 
     else if (status == 2) {
-      wx.redirectTo({
-        url: '/pages/calmain/calmain',
-      })
+
+      if (this.options.tojoin) {
+        wx.redirectTo({
+          url: '/pages/join/join?tojoin=' + this.options.tojoin,
+        })
+        return
+      } else {
+        wx.switchTab({
+          url: '/pages/calmain/calmain',
+        })
+        return
+      }
+
     }
 
     else {

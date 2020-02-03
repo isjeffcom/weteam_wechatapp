@@ -1,7 +1,25 @@
+button{
+  background: #0277F9;
+  border-radius: 1px !important;
+  width: 75% !important;
+  height: 50px !important;
+  color: #ffffff;
+  padding: 14px !important;
+}
+
+button:active{
+  color: #ffffff;
+  background: #006FEA;
+}
+
 input{
-  border: 1px solid #333;
+  border-bottom: 2px solid #888;
   height: 30px;
-  border-radius: 100px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+input:focus{
+  border-bottom: 2px solid #000;
 }
 
 /**app.wxss**/

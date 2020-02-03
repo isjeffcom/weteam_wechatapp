@@ -1,0 +1,165 @@
+<!--component/ncalendar/ncalendar.wxml-->
+<view class="calendar">
+
+  <view class="calendar-control" id="calendar-control">
+
+    <view class="calendar-control-inner">
+
+      <view class="calendar-control-btn calendar-control-btn-left" bindtap="lastMouth">
+        <image class="calendar-control-btn-image" src="./assets/left.svg"></image>
+      </view>
+
+      <view class="calendar-control-btn calendar-control-btn-right" bindtap="nextMouth">
+        <image class="calendar-control-btn-image" src="./assets/right.svg"></image>
+      </view>
+
+      <view class="calendar-control-center">
+        <text>{{ thisTodayStr.year }}-{{ thisTodayStr.mouth }}</text>
+      </view>
+    
+    </view>
+  
+  </view>
+
+  <view class="calendar-week-indi" id="calendar-week-indi" style="margin-top:{{ currentView == 'mouth' ? 20 : -6}}px">
+    <view class="calendar-week-indi-inner" style="opacity: {{ currentView == 'mouth' ? 0.2 : 0.4}} ;">
+
+      <view
+        class="calendar-week-indi-s"
+        wx:for="{{weeksStr}}"
+        wx:for-item="item"
+        wx:for-index="idx"
+        wx:key="idx">
+         
+         <text>{{ item }}</text>
+
+      </view>
+    </view>
+    
+  </view>
+
+  <view class="calendar-cont" id="calendar-cont">
+
+    <view class="calendar-inner" id="calendar-inner">
+
+      <!-- MOUTH VIEW START -->
+      <view 
+        class="calendar-all"
+        wx:if="{{ currentView == 'mouth' }}"
+        wx:for="{{ thisMouth }}"
+        wx:for-index="idx" 
+        wx:for-item="item"
+        wx:key="idx"
+        style="opacity: {{ item.isThisMouth ? 1 : 0.3 }};">
+
+        <view 
+          class="calendar-slot" 
+          data-d="{{item}}" 
+          bindtap="daySelected"
+          wx:if="{{ item.isThisMouth && item.d == currentSelected }}">
+          
+          <view class="calendar-slot-text">
+            <text>{{ item.d }}</text>
+          </view>
+
+          <view class="calendar-slot-selected" style="background: {{ selectedColor }};">
+          </view>
+          
+        </view>
+
+        <view 
+          class="calendar-slot" 
+          data-d="{{item}}" 
+          bindtap="daySelected" 
+          wx:else>
+
+          <view>
+            <text>{{ item.d }}</text>
+          </view>
+        </view>
+
+        
+      </view>
+      <!-- MOUTH VIEW END -->
+
+      <!-- WEEK VIEW START -->
+      <swiper 
+        class="calendar-week-swiper"
+        current="{{ currentWeekCount }}"
+        duration="300"
+        easing-function="easeInOutCubic">
+
+      <swiper-item
+        class="calendar-all-week"
+        id="calendar-all-week"
+        wx:if="{{ currentView == 'week' }}"
+        wx:for="{{ thisMouthInWeek }}"
+        wx:for-index="idx" 
+        wx:for-item="item"
+        wx:key="idx">
+
+        <view 
+          class="calendar-week"
+          wx:for="{{ item }}"
+          wx:for-index="idxx" 
+          wx:for-item="el"
+          wx:key="idxx"
+          style="opacity: {{ el.isThisMouth ? 1 : 0.3 }};">
+
+            <view 
+            class="calendar-slot" 
+            data-d="{{el}}" 
+            bindtap="daySelected"
+            wx:if="{{ el.isThisMouth && el.d == currentSelected }}">
+            
+            <view class="calendar-slot-text">
+              <text>{{ el.d }}</text>
+            </view>
+
+            <view class="calendar-slot-selected" style="background: {{ selectedColor }};">
+            </view>
+            
+          </view>
+
+          <view 
+            class="calendar-slot" 
+            data-d="{{el}}" 
+            bindtap="daySelected" 
+            wx:else>
+
+            <view>
+              <text>{{ el.d }}</text>
+            </view>
+          </view>
+
+        </view>
+
+        </swiper-item>
+      </swiper>
+      <!-- WEEK VIEW END -->
+    
+    </view>
+
+  </view>
+
+  <movable-area 
+      class="calendar-view-contoller" 
+      scale-area
+      style="height: {{ cvcHeight }}px;">
+      <movable-view 
+        class="calendar-view-contoller-cont" 
+        direction="vertical" 
+        inertia 
+        out-of-bounds
+        y="{{ cvcY }}" 
+        damping="60" 
+        friction="2" 
+        bindchange="cvcChange"
+        disabled="{{ cvcOpen }}"
+        >
+        <view class="calendar-view-contoller-box"></view>
+      </movable-view>
+        
+    </movable-area>
+
+</view>

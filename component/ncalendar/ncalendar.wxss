@@ -1,0 +1,146 @@
+/* component/ncalendar/ncalendar.wxss */
+
+.calendar{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #fafafa;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  border-bottom-right-radius:40px;
+  border-bottom-left-radius:40px;
+  z-index: 100;
+}
+
+.calendar-control{
+  height: 16px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.calendar-control-inner{
+  width: 100%;
+}
+
+.calendar-control-btn{
+  position: absolute;
+}
+
+.calendar-control-btn-image{
+  width: 16px;
+  height: 16px;
+}
+
+.calendar-control-btn-left{
+  left: 20px;
+}
+
+.calendar-control-btn-right{
+  right: 20px;
+}
+
+.calendar-control-center{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar-week-indi{
+  width: 100%;
+}
+
+.calendar-week-indi-inner{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 12px;
+}
+
+.calendar-week-indi-s{
+  width: calc(100%/7);
+}
+
+.calendar-cont{
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.calendar-inner{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendar-all{
+  margin-top: 20px;
+  width: calc(100%/7);
+  text-align: center;
+}
+
+.calendar-week{
+  margin-top: 11px;
+  width: calc(100%/7);
+}
+
+.calendar-slot{
+  text-align: center;
+  font-weight: bolder;
+  height: 24px;
+}
+
+.calendar-slot-text{
+  color: #ffffff;
+  z-index:10;
+}
+
+.calendar-slot-selected{
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  margin-top: -29px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1;
+}
+
+.calendar-view-contoller{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.calendar-view-contoller-cont{
+  width: 100%;
+  height: 40px;
+  padding-top: 15px;
+}
+
+.calendar-view-contoller-box{
+  width: 40px; 
+  height: 6px; 
+  border-radius: 100px; 
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.calendar-week-swiper{
+  height: 50px;
+  width: 100%;
+}
+
+.calendar-all-week{
+  display: flex;
+  overflow: hidden;
+}

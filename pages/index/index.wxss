@@ -1,5 +1,5 @@
 /**index.wxss**/
-.userinfo {
+/*.userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,4 +18,48 @@
 
 .usermotto {
   margin-top: 200px;
+}*/
+
+.intro-top-area{
+  position: absolute;
+  top:0px;
+  width: 100%;
+}
+
+.intro-top-area-img{
+  width: 100%;
+}
+
+.intro-cont{
+  margin-top: 100rpx;
+  padding: 60rpx;
+}
+
+.intro-logo-img{
+  width: 400rpx;
+}
+
+.intro-block{
+  font-size: 20px;
+  margin-top: 44rpx;
+}
+
+.intro-block-title{
+  font-weight: bolder;
+}
+
+.intro-go{
+  position: relative;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.intro-go-term{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  margin-top: 14rpx;
+  opacity: .6;
+  text-align: center;
 }

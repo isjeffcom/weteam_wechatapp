@@ -1,34 +1,53 @@
 <!--pages/searchuser/searchuser.wxml-->
-<view id="searchuser">
-
-
-
-  <view id="searchuser-inner">
+<view class="searchuser">
+  <view class="search-user-inner">
 
     <view class="search-cont">
-      <text>输入对方学号</text>
-      <input style="border-bottom: 1px solid #333;" type="text" bindinput="sVal" />
-      <text>（基于数据保护原因，对方只有使用过本小程序才能被搜索）</text>
-    </view>
 
-    <button bindtap="search">搜索</button>
-
-
-    <view class="search-res">
-      <view wx:for="{{ allResult }}" 
-            wx:for-index="idx"
-            wx:for-item="item"
-            data-id="{{item.id}}"
-            data-n="{{item.name}}"
-            data-img="{{item.img}}"
-            bindtap="select"
-            class="search-res-single">
-        {{item.name}}
+      <view class="search-title">
+        <text>输入对方学号</text>
       </view>
+
+      <view class="search-input">
+        <input type="number" bindinput="sVal" />
+      </view>
+
+      <view class="search-input-hint">
+        <text>对方只有使用过本应用才能被找到</text>
+      </view>
+
+      <view class="search-res" wx:if="{{ allResult.length > 0 }}">
+        <view class="search-res-title">搜索结果</view>
+        <view wx:for="{{ allResult }}" 
+              wx:for-index="idx"
+              wx:for-item="item"
+              data-id="{{item.id}}"
+              data-n="{{item.name}}"
+              data-img="{{item.img}}"
+              bindtap="select"
+              class="search-res-single">
+
+              <view class="search-res-text">
+                {{item.name}}
+              </view>
+          
+        </view>
+      </view>
+
     </view>
+
+    <view class="search-btn">
+      <button bindtap="search">搜索</button>
+    </view>
+      
 
   </view>
 
-  <view bindtap="close">关闭</view>
+  <view class="search-close" bindtap="close">
+    <view class="search-close-inner">
+      <image class="search-close-img" src="./assets/close.svg"></image>
+    </view>
+    
+  </view>
 
 </view>

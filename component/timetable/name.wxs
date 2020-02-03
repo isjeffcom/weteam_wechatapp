@@ -1,0 +1,30 @@
+var setName = function (str, height) {
+
+  var length = Math.floor((height / 60) * 32)
+  if (str.length > length){
+    str = str.slice(0, length) + "..."
+  }
+
+  return str
+}
+
+var limitName = function (str, length){
+  if (str.length > length) {
+    str = str.slice(0, length) + "..."
+  }
+
+  return str
+}
+
+var getNamePT = function(str){
+  if(str){
+    var tl = Math.ceil(str.length / 28)
+    return 18 * (tl + 1)
+  }
+}
+
+module.exports = {
+  setName: setName,
+  limitName: limitName,
+  getNamePT: getNamePT
+};

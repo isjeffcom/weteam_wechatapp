@@ -1,5 +1,6 @@
 <!--index.wxml-->
-<view class="container">
+<!--titlebar mode="side"></titlebar-->
+<!--view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 开始使用 </button>
     <block wx:else>
@@ -12,4 +13,64 @@
   <view class="usermotto">
     <text class="user-motto" bindtap="toCal">{{motto}}</text>
   </view>
+</view-->
+
+<view class="intro">
+  <view class="intro-top-area">
+    <image class="intro-top-area-img" src="../../assets/imgs/bb.png" mode="widthFix"></image>
+  </view>
+
+  <view class="intro-cont">
+    <view class="intro-logo">
+      <image class="intro-logo-img" src="../../assets/imgs/index_logo.png" mode="widthFix"></image>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-text">
+        目前是一个提供给爱丁堡大学学生使用的课程表和团队管理工具。目前处于早期测试阶段。
+      </view>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">现有能力</view>
+      <text class="intro-block-text">- 查看你的课程表
+        - 创建团队
+        - 分享团队
+        - 查看队员课程表
+      </text>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">未来能力</view>
+      <text class="intro-block-text">- 团队看板任务管理
+        - 计划分配会议
+        - 公告板
+        - 房间预订
+        - 支持更多学校
+
+      </text>
+      <text class="intro-block-text-hint">本应用处于测试阶段，任何问题请联系s1888009@ed.ac.uk</text>
+    </view>
+
+
+  </view>
+
+  <view class="intro-go">
+    <view class="intro-go-btn">
+      <button  
+        wx:if="{{!hasUserInfo && canIUse}}" 
+        open-type="getUserInfo" 
+        bindgetuserinfo="getUserInfo"> 
+        微信登录 
+      </button>
+    </view>
+
+    <view class="intro-go-term">
+      本小程序不保存myed密码，密码储存于本地。\n
+      点击开始使用即代表你授权公开课程表。
+    </view>
+
+  </view>
+
 </view>
+

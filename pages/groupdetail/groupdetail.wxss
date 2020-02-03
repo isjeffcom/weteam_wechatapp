@@ -1,0 +1,90 @@
+.group-info{
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  top:0px;
+  background: #fafafa;
+  z-index: 99;
+  margin-top: 90px;
+}
+
+.group-info-inner{
+  margin-top: 16px;
+}
+
+.group-info-left{
+  display: flex;
+  width: 50%;
+  padding-left: 20px;
+}
+
+.group-info-icon-img{
+  width: 36px;
+  height: 36px;
+}
+
+.group-info-name{
+  margin-top: 6px;
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.group-info-right{
+  position: fixed;
+  display: flex;
+  right: 20px;
+  top: 108px;
+}
+
+.group-info-users {
+  display: flex;
+}
+
+.group-info-users-s{
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  margin-right: -12px;
+  overflow: hidden;
+}
+
+.group-info-users-s-img{
+  width: 30px;
+  height: 30px;
+}
+
+.group-info-count{
+  margin-left: 18px;
+  margin-top: 5px;
+  opacity: .6;
+}
+
+
+.cal-cont{
+  position: fixed;
+  width: 100%;
+  top: 60px;
+  background: rgba(255,255,255,1);
+  z-index: 99;
+  margin-top: 90px;
+}
+
+.tt-cont{
+  margin-top:270px;
+}
+
+.cal-view-switcher{
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  background:#F6F6F6;
+}
+
+.cal-view-switcher:active{
+  background:#CACACA;
+}
+
+.cal-view-switcher-icon{
+  width: 100%;
+}
+

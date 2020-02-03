@@ -1,0 +1,65 @@
+<titlebar mode="side" nav="{{ titleNav }}"></titlebar>
+<view id="calmain">
+  <view class="group-info">
+    <view class="group-info-inner">
+      <view class="group-info-left">
+          <view class="group-info-icon">
+            <image class="group-info-icon-img" src="../../assets/imgs/group.png"></image>
+          </view>
+
+          <view class="group-info-name">
+            <text class="group-info-name-text">{{ gname }}</text>
+          </view>
+        
+      </view>
+
+      <view class="group-info-right">
+
+        <view class="group-info-users">
+          <view 
+          class="group-info-users-s"
+          wx:for="{{ memImgs }}"
+          wx:for-index="idx"
+          wx:for-item="item" 
+          wx:key="idx"
+          wx:if="{{ idx <= 3}}"
+          >
+          <image class="group-info-users-s-img" src="{{ item.img }}"></image>
+          
+          </view>
+          
+        </view>
+
+        <view class="group-info-count">
+          <text>x{{memImgs.length}}</text>
+        </view>
+      
+      </view>
+      
+    </view>
+  </view>
+
+  <view class="cal-cont">
+
+    <ncalendar 
+      initView="week" 
+      selectedColor="#0277F9"
+      bind:onDayTap="afterTapDay">
+    
+    </ncalendar>
+    
+  </view>
+
+  <view class="tt-cont">
+    <timetable
+      events="{{ currentEvtArr }}"
+      hasMems
+      memsImg="{{ memImgs }}"
+    >
+    </timetable>
+  </view>
+
+  <button style="margin-top: 20px; margin-bottom: 20px" bindtap="update">更新</button>
+
+
+</view>

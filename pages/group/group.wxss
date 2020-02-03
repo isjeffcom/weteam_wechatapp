@@ -1,0 +1,48 @@
+/* pages/team/team.wxss */
+#all{
+  margin-top: 200rpx;
+}
+.team-single{
+  background: #ffffff;
+  margin-bottom: 50rpx;
+  margin-left: auto;
+  margin-right: auto;
+  height: 160rpx;
+  width: 90%;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 24rpx;
+}
+
+.team-single-name{
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0.7;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}
+
+.team-single-mems{
+  margin-left: 10rpx;
+  margin-top: 2rpx;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.team-list-end{
+  font-size: 16px;
+  opacity: 0.3;
+  width: 100%;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.team-list-end-text{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  text-align: center;
+}

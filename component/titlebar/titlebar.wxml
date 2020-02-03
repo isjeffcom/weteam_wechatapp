@@ -1,0 +1,41 @@
+<!--component/titlebar/titlebar.wxml-->
+<view 
+  class="titlebar" 
+  style="padding-top:{{ titlePaddingTop }}rpx; position: {{ position }}; background: {{ color }}; height: {{ 40 - heightOffset }}px">
+
+  <view class="titlebar-inner">
+    <view class="title-bar-normal" wx:if="{{ mode == 'side' }}">
+      
+      <view class="title-bar-left">
+        <view class="title-bar-back" wx:if="{{ nav == 'back' }}" bindtap="toBack">
+          <image class="title-bar-back-img" src="./assets/back.svg"></image>
+        </view>
+
+        <view class="title-bar-back title-bar-home" wx:if="{{ nav == 'home' }}" bindtap="toHome">
+          <image class="title-bar-back-img title-bar-home-img" src="./assets/home.svg"></image>
+        </view>
+
+        <view class="title-bar-logo">
+          <image class="title-bar-logo-img" src="./assets/logo.svg" mode="aspectFit"></image>
+        </view>
+
+      </view>
+
+      <view class="title-bar-right">
+
+      </view>
+    </view>
+    
+
+    <view 
+      class="title-bar-center title-bar-logo-center" 
+      wx:if="{{ mode == 'center' }}">
+
+      <view class="title-bar-logo">
+        <image class="title-bar-logo-img" src="./assets/logo.svg" mode="aspectFit"></image>
+      </view>
+
+    </view>
+  </view>
+
+</view>

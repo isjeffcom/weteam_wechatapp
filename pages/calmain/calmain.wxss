@@ -1,1 +1,27 @@
-/* pages/calendar/calmain.wxss */
+.cal-cont{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background: rgba(255,255,255,1);
+  z-index: 99;
+  margin-top: 90px;
+}
+
+.tt-cont{
+  margin-top:210px;
+}
+
+.cal-view-switcher{
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  background:#F6F6F6;
+}
+
+.cal-view-switcher:active{
+  background:#CACACA;
+}
+
+.cal-view-switcher-icon{
+  width: 100%;
+}

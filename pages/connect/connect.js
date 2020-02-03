@@ -16,6 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    wx.hideShareMenu()
+
     var check = util.checkLogin()
     if (!check.res){
       wx.redirectTo({
@@ -111,16 +114,23 @@ Page({
         wx.hideLoading()
 
         if(res.status){
-          console.log(res.data)
           var saveData = wx.setStorageSync("data_tt", res.data.data)
           var saveName = wx.setStorageSync("data_n", res.data.name)
           var saveSNum = wx.setStorageSync("login_snum", that.data.username)
           var savePsw = wx.setStorageSync("login_psw", that.data.password)
           var setStatus = wx.setStorageSync("login_status", res.data.userStatus)
 
-          wx.switchTab({
-            url: '/pages/calmain/calmain',
-          })
+          if(this.options.tojoin){
+            wx.redirectTo({
+              url: '/pages/join/join?tojoin=' + this.options.tojoin,
+            })
+          } else {
+            wx.switchTab({
+              url: '/pages/calmain/calmain',
+            })
+          }
+
+          
 
         } else {
 

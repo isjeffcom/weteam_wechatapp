@@ -1,5 +1,57 @@
 /* pages/connect/connect.wxss */
 
+input{
+  width: 90%;
+  font-size: 24px;
+}
+
+.connect-inner{
+  padding: 40rpx;
+}
+
+.connect-title-text{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.connect-title-line{
+  margin-top: 6rpx;
+  opacity: 0.5;
+}
+
+.connect-window{
+  width: 100%;
+  margin-top: 60rpx;
+}
+
 #stuNumInput{
-  width: 50%;
+  width: 55%;
+  margin-left: 5%;
+}
+
+.cw-u-hint{
+  width: 90%;
+  font-size: 20px;
+  opacity: .6;
+}
+
+.cw-u-hint-left{
+  margin-top: -72rpx;
+  position: absolute;
+}
+
+.cw-u-hint-right{
+  position: absolute;
+  right: 14%;
+  margin-top: -66rpx;
+}
+
+.cw-password{
+  margin-top: 60rpx;
+}
+
+.cw-btn{
+  position: absolute;
+  width: 90%;
+  bottom: 90rpx;
 }

@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.hideShareMenu()
   },
 
   tapToOverlay: function (){
@@ -103,6 +103,14 @@ Page({
       return
     }
 
+    if(this.data.groupName.length > 16){
+      wx.showToast({
+        title: '小组名称不能超过8个字',
+        icon: "none",
+      })
+      return
+    }
+
     wx.showLoading({
       title: '正在创建',
     })
@@ -124,7 +132,7 @@ Page({
       if(res.status){
         wx.hideLoading()
         wx.navigateBack({
-          url: '/pages/team/team',
+          url: '/pages/group/group',
         })
       } else {
         wx.showToast({

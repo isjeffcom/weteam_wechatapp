@@ -4,8 +4,11 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/connect/connect",
-    "pages/team/team",
-    "pages/newgroup/newgroup"
+    "pages/group/group",
+    "pages/newgroup/newgroup",
+    "pages/groupdetail/groupdetail",
+    "pages/caltestpage/caltestpage",
+    "pages/join/join"
   ],
   "tabBar": {
     "list": [
@@ -16,7 +19,7 @@
         "selectedIconPath": "assets/imgs/calendar_s.png"
       },
       {
-        "pagePath": "pages/team/team",
+        "pagePath": "pages/group/group",
         "text": "",
         "iconPath": "assets/imgs/team.png",
         "selectedIconPath": "assets/imgs/team_s.png"
@@ -27,7 +30,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

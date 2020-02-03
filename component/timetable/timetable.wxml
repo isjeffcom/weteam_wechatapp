@@ -1,0 +1,158 @@
+<wxs src="./colors.wxs" module="ccolors" />
+<wxs src="./name.wxs" module="cname" />
+<scroll-view 
+  scroll-x="false" 
+  enable-back-to-top 
+  scroll-with-animation
+  id="timetable">
+
+  <view class="tt-cont">
+
+    <!-- Render Time Slots Background -->
+    <view class="tt-time">
+      <view 
+        class="tt-time-single" 
+        wx:for="{{ times }}" 
+        wx:for-index="idx" 
+        wx:for-item="item"
+        wx:key="idx"
+        style="height: {{ slotHeight - 1 }}px;">
+        <view class="tt-time-single-text">
+          <text>{{ item }}</text>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="tt-evts" wx:if="ttEvtsDisplay">
+
+      <!-- Get All Sorted Events -->
+      <view 
+        class="tt-evts-single" 
+        wx:for="{{ innerEvts }}" 
+        wx:for-index="idx" 
+        wx:for-item="item"
+        wx:key="idx">
+
+         <!-- Get Events in the same time slot -->
+        <view 
+          class="tt-evts-single-slot" 
+          bindtap="openDetail"
+          wx:for="{{ item.child }}" 
+          wx:for-item="evt" 
+          wx:for-index="evtIdx" 
+          data-d="{{ evt }}"
+          wx:key="evtIdx"
+          wx:if="{{ item.child.length < 3 }}"
+          style="top: {{ evt.size.top }}px; height: {{ evt.size.height }}px; width: calc(80%/{{ item.child.length }}); left: {{(evtIdx * ((screenWidth / item.child.length + 1) - 40))}}px; background: {{ ccolors.setColor(evt.uuid) }};">
+
+          <!-- Event Time Slot -->
+          <!--view class="tt-evts-single-time">
+            <text>{{evt.startTime}} - {{evt.endTime}}</text>
+          </view-->
+
+          <!-- Event Name -->
+          <view class="tt-evts-single-name">
+            <text>{{ cname.setName(evt.name, evt.size.height) }}</text>
+          </view>
+
+          <!-- User Avatar -->
+          <view class="tt-evts-single-uimg" wx:if="{{ hMems && evt.uimg != null }}">
+            <view class="avatar tt-evts-single-uimg-inner" >
+              <image 
+                class="tt-evts-single-uimg-img" 
+                src="{{ evt.uimg }}" >
+              </image>
+            </view>
+          </view>
+        </view>
+
+        <!-- IF TOO MANY EVENTS -->
+        <view 
+          class="tt-evts-single-slot"
+          bindtap="openDetail"
+          wx:for="{{ item.child }}" 
+          wx:for-item="evt" 
+          wx:for-index="evtIdx" 
+          wx:key="evtIdx"
+          data-d="{{ item.child }}"
+          wx:if="{{ item.child.length >= 3 && evtIdx == 0}}"
+          style="top: {{ evt.size.top }}px; height: {{ evt.size.height }}px; background: {{ ccolors.setColor(evt.uuid) }};">
+          <!-- Events Count Number -->
+          <view class="tt-evts-single-name">
+            <text>{{ item.child.length }} 个事件</text>
+          </view>
+        </view>
+      
+      </view>
+
+    </view>
+
+    <!-- Current Time Indicator -->
+    <view 
+      class="tt-evts-single tt-evts-current"
+      style="top: {{ currentLine.top }}px; height: {{ currentLine.height }}px; background: #F90279;">
+
+      <text class="tt-evts-current-text">NOW</text>
+    </view>
+  
+  </view>
+
+</scroll-view>
+
+<!-- Display Event Detail Once User Clicked -->
+<view class="tt-evts-detail" wx:if="{{ detailOpen }}">
+
+    
+    <view class="tt-evts-detail-inner" >
+      <!-- Detail Popup Title Area for Name and BG -->
+      <view class="tt-evts-detail-title" style="background: {{ ccolors.setColor(currentInfo[currentInfoIndex].uuid) }};">
+        <!-- Person who attend this event with avatar and name -->
+        <view class="tt-evts-detail-title-user" style="display: flex;" wx:if="{{ hMems }}">
+          <view class="avatar" style="margin-right: 4px;">
+            <image src="{{ currentInfo[currentInfoIndex].uimg }}" style="width: 20px; height:20px;"></image>
+          </view>
+          
+          <text>{{currentInfo[currentInfoIndex].uname}} \n</text>
+        </view>
+
+        <view class="tt-evts-detail-title-text">{{ cname.limitName(currentInfo[currentInfoIndex].name, 80) }}</view>
+      </view>
+
+      <!-- Detail Popup Window Content -->
+      <view class="tt-evts-detail-content">
+        <text>Start: {{currentInfo[currentInfoIndex].start}} \n</text>
+        <text>End: {{currentInfo[currentInfoIndex].end}} \n</text>
+        <text>Location: {{currentInfo[currentInfoIndex].location}} \n</text>
+      </view>
+
+    </view>
+
+    <!-- Multiple Events Swiper -->
+    <view class="tt-evts-detail-control" wx:if="{{ currentInfo.length > 1 }}">
+      <!-- Left -->
+      <view class="tt-evts-detail-c tt-evts-detail-c-left" bindtap="lastEvt">
+        <view class="tt-evts-detail-c-icon" style="opacity: {{ currentInfoIndex == 0 ? 0.3 : 1}}">
+          <image class="tt-evts-detail-c-icon-img" src="./assets/left.svg"></image>
+        </view>
+        
+      </view>
+
+      <!-- Right -->
+      <view class="tt-evts-detail-c tt-evts-detail-c-right" bindtap="nextEvt">
+        <view class="tt-evts-detail-c-icon" style="transform: rotate(180deg); opacity: {{ currentInfoIndex == currentInfo.length-1 ? 0.3 : 1}}">
+          <image class="tt-evts-detail-c-icon-img" src="./assets/left.svg"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- Close Btn -->
+    <view class="tt-evts-detail-close" bindtap="closeDetail">
+
+      <view class="tt-evts-detail-close-icon">
+        <image class="tt-evts-detail-close-icon-img" src="./assets/close.svg"></image>
+      </view>
+      
+    </view>
+  </view>
+

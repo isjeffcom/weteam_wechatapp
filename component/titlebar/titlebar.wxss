@@ -1,0 +1,48 @@
+/* component/titlebar/titlebar.wxss */
+.titlebar{
+  top:0px;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: .5px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.title-bar-logo-center{
+  width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-right: 22px;
+}
+
+.title-bar-left{
+  display: flex;
+}
+
+.title-bar-logo-img{
+  width: 120px;
+  height: 32px;
+}
+
+.title-bar-back{
+  margin-right: 12rpx;
+  margin-top: 10rpx;
+}
+
+.title-bar-back-img{
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.title-bar-home{
+  margin-left: 6rpx;
+  margin-right: 20rpx;
+}
+
+.title-bar-home-img{
+  width: 46rpx;
+  height: 46rpx;
+}

@@ -1,0 +1,4 @@
+<!--pages/caltestpage/caltestpage.wxml-->
+<!--text>pages/caltestpage/caltestpage.wxml</text-->
+
+<ncal></ncal>

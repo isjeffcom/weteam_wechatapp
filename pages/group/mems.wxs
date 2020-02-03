@@ -1,0 +1,19 @@
+var count = function (val) {
+
+  if (!val) {
+    return 0
+  }
+
+  var c
+  
+  if(val.indexOf(",") != -1){
+    c = val.split(",")
+    return c.length
+  } else {
+    return 1
+  }
+
+}
+module.exports = {
+  count: count,
+};

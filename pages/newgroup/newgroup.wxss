@@ -1,12 +1,59 @@
 /* pages/newgroup/newgroup.wxss */
 
+#all{
+  padding: 30rpx;
+}
+
+input{
+  font-size: 20px;
+}
+
+.name-cont{
+  margin-top: 80rpx;
+}
+
+.members-cont{
+  margin-top: 60rpx;
+  background: rgba(0,0,0,0.03);
+  border-radius: 8rpx;
+  border: 1px solid rgba(0,0,0,0.08)
+}
+
+.team-single{
+  display: flex;
+  height: 60rpx;
+  padding: 44rpx;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
 .members-img{
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 100px;
+  overflow: hidden;
 }
 
 .members-img image{
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
+
+.members-name{
+  margin-left: 28rpx;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10rpx;
+}
+
+.members-add{
+  margin-top: 40rpx;
+  margin-bottom:40rpx;
+}
+
+.members-add-text{
+  text-align: center;
+  font-size: 16px;
+  color: #0277F9;
+}
+
+
