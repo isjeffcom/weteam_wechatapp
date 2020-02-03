@@ -130,10 +130,7 @@ Page({
         var err = res.data.err
         if (err.indexOf("ingroup") != -1){
 
-          wx.showToast({
-            title: '您已经在小组中，无需重复添加',
-            icon: 'none'
-          })
+          console.log("Already in the group")
 
           wx.redirectTo({
             url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&gname=' + gname + '&join=' + 't'
@@ -141,7 +138,16 @@ Page({
 
           return
           
-        } else {
+        } 
+        
+        else if (err.indexOf("closed") != -1){
+          wx.showToast({
+            title: '无法加入，小组公开权限已被管理员关闭',
+            icon: "none"
+          })
+        }
+        
+        else {
           wx.showToast({
             title: '网络错误，加入失败',
             icon: 'none'

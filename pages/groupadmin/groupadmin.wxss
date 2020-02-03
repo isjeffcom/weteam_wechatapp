@@ -1,0 +1,92 @@
+/* pages/groupadmin/groupadmin.wxss */
+
+#groupadmin{
+  padding: 32rpx;
+}
+
+.cont-title{
+  margin-top: 60rpx;
+}
+
+.ga-name-text{
+  margin-top: 16rpx;
+  font-size: 18px;
+}
+
+.members-cont{
+  margin-top: 20rpx;
+  background: rgba(0,0,0,0.03);
+  border-radius: 8rpx;
+  border: 1px solid rgba(0,0,0,0.08)
+}
+
+.team-single{
+  display: flex;
+  height: 60rpx;
+  padding: 44rpx;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.members-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.members-img image{
+  width: 40px;
+  height: 40px;
+}
+
+.members-name{
+  margin-left: 28rpx;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10rpx;
+}
+
+.members-add{
+  margin-top: 40rpx;
+  margin-bottom:40rpx;
+}
+
+.members-add-text{
+  text-align: center;
+  font-size: 16px;
+  color: #0277F9;
+}
+
+.members-del{
+  position: absolute;
+  right: 60rpx;
+  margin-top: 10rpx;
+  color: #F24C4C;
+}
+
+.ga-state{
+  margin-top: 20rpx;
+}
+
+.ga-state-inner{
+  display: flex;
+}
+
+.ga-state-text{
+  font-size: 18px;
+}
+
+.ga-state-switcher{
+  position: absolute;
+  right: 20rpx;
+  margin-top: -9rpx;
+}
+
+.ga-btn-cont{
+  margin-top: 120rpx;
+  margin-bottom: 40rpx;
+}
+
+.ga-btn-s{
+  margin-bottom: 24rpx;
+}

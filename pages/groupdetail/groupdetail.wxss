@@ -12,6 +12,26 @@
   margin-top: 16px;
 }
 
+.group-info-invt{
+  margin-right: 24rpx;
+  margin-top: -8rpx;
+}
+
+.group-info-invt-btn{
+  border: 1px solid #0277F9;
+  background: rgba(0,0,0,0);
+  color: #0277F9;
+  height: 20rpx !important;
+  width: 140rpx !important;
+  padding: 18rpx !important;
+  border-radius: 8rpx !important;
+  padding-left: 22rpx;
+  padding-right: 22rpx;
+  font-size: 15px;
+}
+
+
+
 .group-info-left{
   display: flex;
   width: 50%;
@@ -44,7 +64,7 @@
   width: 30px;
   height: 30px;
   border-radius: 100px;
-  margin-right: -12px;
+  margin-right: -26rpx;
   overflow: hidden;
 }
 
@@ -54,7 +74,7 @@
 }
 
 .group-info-count{
-  margin-left: 18px;
+  margin-left: 24rpx;
   margin-top: 5px;
   opacity: .6;
 }

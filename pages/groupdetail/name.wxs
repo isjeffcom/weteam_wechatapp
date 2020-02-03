@@ -1,0 +1,11 @@
+var limitName = function (str, length) {
+  if (str.length > length) {
+    str = str.slice(0, length) + "..."
+  }
+
+  return str
+}
+
+module.exports = {
+  limitName: limitName
+};

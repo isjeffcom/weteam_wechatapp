@@ -4,6 +4,7 @@ var testData = require('../../utils/testData.js')
 Component({
   lifetimes: {
     attached: function (e) {
+      
     },
   },
   /**
@@ -30,9 +31,13 @@ Component({
         eevt[i].uimg = uinfo.img
         eevt[i].uname = uinfo.name
       }
-      this.setData({
+      /*this.setData({
         innerEvts: eevt
-      })
+      })*/
+
+      this.renderEvts(eevt)
+      console.log(eevt)
+
     }
   },
 

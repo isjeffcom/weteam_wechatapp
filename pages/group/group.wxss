@@ -16,6 +16,10 @@
   padding: 24rpx;
 }
 
+.team-single:active{
+  background: #f4f4f4;
+}
+
 .team-single-name{
   font-size: 18px;
   font-weight: bold;

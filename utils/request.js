@@ -1,7 +1,7 @@
 const util = require("./util.js")
 
-//const base_api = "http://localhost:3000"
-const base_api = "https://uoedcal.isjeff.com"
+const base_api = "http://localhost:3000"
+//const base_api = "https://uoedcal.isjeff.com"
 
 function getBaseUrl () {
   return base_api

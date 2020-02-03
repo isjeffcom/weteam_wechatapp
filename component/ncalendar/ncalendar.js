@@ -57,9 +57,9 @@ Component({
     setTimeout(()=>{
       // Init View
       if (this.data.currentView != this.data.initView) {
-        this.toView(this.data.initView, 80)
+        this.toView(this.data.initView, 160)
       }
-    }, 360)
+    }, 420)
     
   },
 

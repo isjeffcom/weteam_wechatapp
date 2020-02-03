@@ -47,7 +47,13 @@ input:focus{
 }
 
 .title-text-1{
+  font-weight: bold;
   font-size: 32px;
+}
+
+.title-text-3{
+  font-size: 14px;
+  opacity: .5;
 }
 
 .title-right{

@@ -1,0 +1,100 @@
+<!--pages/groupadmin/groupadmin.wxml-->
+<titlebar mode="side" position="relative" color="#ffffff" heightOffset="30" nav="back"></titlebar>
+
+
+<view id="groupadmin">
+  <view class="ga-title">
+    <view class="ga-title-text">
+      <text class="title-text-1">小组管理</text>
+    </view>
+  </view>
+
+  <view class="cont-title">
+    <text class="title-text-3">小组名称</text>
+  </view>
+
+  <view class="ga-name">
+    <view class="ga-name-text" wx:if="{{ !isAdm }}">
+      <text>{{ gName }}</text>
+    </view>
+
+    <view class="ga-name-text" wx:if="{{ isAdm }}">
+      <input type="text" value="{{ gName }}" bindinput="ipNewGName"></input>
+    </view>
+  </view>
+
+  
+
+  <view class="cont-title">
+    <text class="title-text-3">加入权限</text>
+  </view>
+
+  <view class="ga-state">
+    <view class="ga-state-inner">
+      <view class="ga-state-text">
+        允许加入
+      </view>
+
+      <view class="ga-state-switcher">
+        <switch 
+          checked="{{ gState }}" 
+          disabled="{{ !isAdm }}" 
+          color="#0277F9"
+          bindchange="stateChange"></switch>
+      </view>
+      
+    </view>
+  </view>
+
+  <view class="cont-title">
+    <text class="title-text-3">全部成员</text>
+  </view>
+
+  <view class="members-cont">
+    <view 
+      wx:for="{{ memsAll }}" 
+      wx:for-index="idx"
+      wx:for-item="item" 
+      wx:key="idx"
+      data-id="{{item.id}}"
+      bindtap="removeMember"
+      class="team-single">
+      
+      <view class="members-img">
+        <image src="{{ item.img }}" mode="aspectFill"></image>
+      </view>
+
+      <view class="members-name">
+        <text>{{item.name}}</text>
+      </view>
+
+      <view 
+        class="members-del" 
+        wx:if="{{ item.id != gAdm}}"
+        data-id="{{item.id}}" 
+        bindtap="removeAsk">
+        <text>移出</text>
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class="ga-btn-cont">
+
+    <view class="ga-btn-s ga-submit" wx:if="{{ !isAdm }}">
+      <button bindtap="leave" style="background: #F3F3F3 !important; color: #F24C4C !important;">离开小组</button>
+    </view>
+
+    <view class="ga-btn-s ga-submit" wx:if="{{ isAdm }}">
+      <button bindtap="update">保存并更新</button>
+    </view>
+
+    <view class="ga-btn-s ga-delete" wx:if="{{ isAdm }}">
+      <button bindtap="delPreAsk" style="background: #F24C4C !important;">删除小组</button>
+    </view>
+  </view>
+
+  
+
+</view>

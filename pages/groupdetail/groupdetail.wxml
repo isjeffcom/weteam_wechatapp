@@ -1,14 +1,15 @@
+<wxs src="./name.wxs" module="cname" />
 <titlebar mode="side" nav="{{ titleNav }}"></titlebar>
 <view id="calmain">
   <view class="group-info">
     <view class="group-info-inner">
       <view class="group-info-left">
-          <view class="group-info-icon">
+          <view class="group-info-icon" bindtap="toAdmin">
             <image class="group-info-icon-img" src="../../assets/imgs/group.png"></image>
           </view>
 
           <view class="group-info-name">
-            <text class="group-info-name-text">{{ gname }}</text>
+            <text class="group-info-name-text">{{ cname.limitName(gname, 10) }}</text>
           </view>
         
       </view>
@@ -16,15 +17,19 @@
       <view class="group-info-right">
 
         <view class="group-info-users">
+
+          <view class="group-info-invt">
+            <button class="group-info-invt-btn" open-type="share"> + 邀请</button>
+          </view>
+
           <view 
           class="group-info-users-s"
           wx:for="{{ memImgs }}"
           wx:for-index="idx"
           wx:for-item="item" 
-          wx:key="idx"
-          wx:if="{{ idx <= 3}}"
-          >
-          <image class="group-info-users-s-img" src="{{ item.img }}"></image>
+          wx:key="idx">
+
+          <image class="group-info-users-s-img" src="{{ item.img }}" wx:if="{{ idx <= 1}}"></image>
           
           </view>
           
@@ -53,9 +58,8 @@
   <view class="tt-cont">
     <timetable
       events="{{ currentEvtArr }}"
-      hasMems
       memsImg="{{ memImgs }}"
-    >
+      hasMems="t">
     </timetable>
   </view>
 

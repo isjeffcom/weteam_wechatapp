@@ -46,6 +46,7 @@ Page({
       allTTData: util.getTT()
     })
 
+
     this.renderDayEvt()
 
     /*var test = { day: 1, week: 6, mouth: 1, year: 2020 }
@@ -59,10 +60,11 @@ Page({
     
     if(!date){
       var tod = new Date()
-      date = { day: tod.getDate(), week: tod.getDay(), mouth: tod.getMonth, year: tod.getFullYear() }
+      date = { day: tod.getDate(), month: tod.getMonth() + 1, week: tod.getDay(), year: tod.getFullYear() }
     }
     
     var evtData = this.getEvt(date)
+
     if (evtData.status){
       this.setData({
         currentEvtArr: evtData.data
@@ -114,6 +116,7 @@ Page({
         this.setData({
           allTTData: res.data.data
         })
+        this.renderDayEvt()
       }
     })
   },

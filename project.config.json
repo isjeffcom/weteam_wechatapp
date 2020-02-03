@@ -86,7 +86,7 @@
 					"id": 4,
 					"name": "pages/groupdetail/groupdetail",
 					"pathName": "pages/groupdetail/groupdetail",
-					"query": "gid=26&uids=10,12&gname=DMSP Group",
+					"query": "gid=26&code=1018&gname=DMSP Group",
 					"scene": null
 				},
 				{
@@ -122,6 +122,13 @@
 					"name": "pages/connect/connect",
 					"pathName": "pages/connect/connect",
 					"query": "gid=26&uids=10,12&gname=DMSP Group",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/groupadmin/groupadmin",
+					"pathName": "pages/groupadmin/groupadmin",
+					"query": "gid=26&code=1018&n=DMSP Group",
 					"scene": null
 				}
 			]

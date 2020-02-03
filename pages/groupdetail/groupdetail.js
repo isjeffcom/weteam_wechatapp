@@ -86,7 +86,7 @@ Page({
   renderDayEvt(date) {
     if (!date) {
       var tod = new Date()
-      date = { day: tod.getDate(), week: tod.getDay(), mouth: tod.getMonth, year: tod.getFullYear() }
+      date = { day: tod.getDate(), week: tod.getDay(), month: tod.getMonth() + 1, year: tod.getFullYear() }
     }
 
     var evtData = this.getEvt(date)
@@ -128,11 +128,18 @@ Page({
 
   // Share Mini App
   onShareAppMessage: function () {
+
     return {
       title: '邀请你加入小组: ' + this.data.gname,
       desc: 'TEAMWORK - 爱丁堡大学日程表小组管理微信工具',
       path: '/pages/join/join?gid=' + this.data.gid + "&code=" + this.data.gcode + "&n=" + util.getName()
     }
+  },
+
+  toAdmin(){
+    wx.navigateTo({
+      url: '/pages/groupadmin/groupadmin?gid=' + this.data.gid + "&code=" + this.data.gcode + "&n=" + util.getName(),
+    })
   },
 
   update() {
@@ -149,9 +156,7 @@ Page({
         })
         //this.renderDayEvt(that.calendar.getSelectedDay())
         var getData = wx.setStorageSync('data_gtt_'+this.data.gid, res.data.data)
-        if (getData) {
-          this.renderDayEvt(that.calendar.getSelectedDay())
-        }
+        this.renderDayEvt()
       }
     })
   }

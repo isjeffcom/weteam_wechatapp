@@ -8,7 +8,8 @@
     "pages/newgroup/newgroup",
     "pages/groupdetail/groupdetail",
     "pages/caltestpage/caltestpage",
-    "pages/join/join"
+    "pages/join/join",
+    "pages/groupadmin/groupadmin"
   ],
   "tabBar": {
     "list": [
