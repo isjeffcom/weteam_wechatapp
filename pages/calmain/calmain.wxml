@@ -24,7 +24,7 @@
     </timetable>
   </view>
 
-  <button style="margin-top: 20px; margin-bottom: 20px" bindtap="update">更新</button>
+  <!--button style="margin-top: 20px; margin-bottom: 20px" bindtap="update">更新</button-->
 
 
 </view>

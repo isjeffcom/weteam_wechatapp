@@ -95,7 +95,7 @@ Page({
   },
 
   toConnect: function () {
-    wx.showLoading({ title: '验证中', icon: 'loading', duration: 10000 });
+    wx.showLoading({ title: '验证中', icon: 'loading' });
 
     var that = this
     if (this.data.username.length > 0 && this.data.password.length > 0){
@@ -112,6 +112,8 @@ Page({
       request.genPost(this.data.api, postData, (res) => {
 
         wx.hideLoading()
+
+        console.log(res)
 
         if(res.status){
           var saveData = wx.setStorageSync("data_tt", res.data.data)

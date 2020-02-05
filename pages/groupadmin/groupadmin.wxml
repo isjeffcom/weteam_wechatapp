@@ -1,5 +1,5 @@
 <!--pages/groupadmin/groupadmin.wxml-->
-<titlebar mode="side" position="relative" color="#ffffff" heightOffset="30" nav="back"></titlebar>
+<titlebar mode="side" color="#ffffff" heightOffset="30" nav="back"></titlebar>
 
 
 <view id="groupadmin">
@@ -27,6 +27,7 @@
 
   <view class="cont-title">
     <text class="title-text-3">加入权限</text>
+    <text class="title-text-3" wx:if="{{ !isAdm }}">(限管理员)</text>
   </view>
 
   <view class="ga-state">
@@ -35,11 +36,12 @@
         允许加入
       </view>
 
-      <view class="ga-state-switcher">
+      <view class="ga-state-switcher" >
         <switch 
           checked="{{ gState }}" 
           disabled="{{ !isAdm }}" 
           color="#0277F9"
+          style="opacity: {{ isAdm ? 1 : 0.5}}"
           bindchange="stateChange"></switch>
       </view>
       
@@ -69,8 +71,9 @@
       </view>
 
       <view 
+
         class="members-del" 
-        wx:if="{{ item.id != gAdm}}"
+        wx:if="{{ item.id != gAdm && isAdm}}"
         data-id="{{item.id}}" 
         bindtap="removeAsk">
         <text>移出</text>
@@ -83,7 +86,7 @@
   <view class="ga-btn-cont">
 
     <view class="ga-btn-s ga-submit" wx:if="{{ !isAdm }}">
-      <button bindtap="leave" style="background: #F3F3F3 !important; color: #F24C4C !important;">离开小组</button>
+      <button bindtap="leaveAsk" style="background: #F3F3F3 !important; color: #F24C4C !important;">离开小组</button>
     </view>
 
     <view class="ga-btn-s ga-submit" wx:if="{{ isAdm }}">

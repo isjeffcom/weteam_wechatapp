@@ -3,6 +3,25 @@
 <titlebar mode="side" color="#ffffff" heightOffset="25"></titlebar>
 <view id="all">
 
+  <view class="guide" wx:if="{{ showGuide }}">
+
+    <view class="guide-text">
+      <text style="font-size: 22px">如何使用</text>
+    </view>
+
+    <view class="guide-gif">
+      <image class="guide-gif-img" src="https://i.imgur.com/BYIqNvU.gif" mode="widthFix"></image>
+    </view>
+
+    <view class="guide-text">
+      <text>创建小组 > 分享到微信 > 邀请组员加入</text>
+    </view>
+
+    <view class="guide-btn">
+      <button bindtap="closeGuide">知道了 ({{countDown}}s)</button>
+    </view>
+  </view>
+
   <view class="title">
 
     <view class="title-left">
@@ -17,9 +36,9 @@
 
   <view id="teams-cont">
 
-    <view wx:if="{{ allGroups.length < 1 }}">
+    <view style="margin-left: 20rpx; opacity: 0.7;" wx:if="{{ allGroups.length < 1 }}">
 
-      <text>还没加入任何小组</text>
+      <text>未加入任何小组</text>
 
     </view>
 

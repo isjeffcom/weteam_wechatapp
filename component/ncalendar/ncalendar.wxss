@@ -13,9 +13,9 @@
 }
 
 .calendar-control{
-  height: 16px;
-  padding-top: 10px;
-  margin-bottom: 10px;
+  height: 32rpx;
+  padding-top: 16rpx;
+  margin-bottom: 20rpx;
 }
 
 .calendar-control-inner{
@@ -27,16 +27,16 @@
 }
 
 .calendar-control-btn-image{
-  width: 16px;
-  height: 16px;
+  width: 32rpx;
+  height: 32rpx;
 }
 
 .calendar-control-btn-left{
-  left: 20px;
+  left: 40rpx;
 }
 
 .calendar-control-btn-right{
-  right: 20px;
+  right: 40rpx;
 }
 
 .calendar-control-center{
@@ -66,7 +66,7 @@
 
 .calendar-cont{
   width: 100%;
-  height: 240px;
+  height: 480rpx;
   overflow: hidden;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .calendar-all{
-  margin-top: 20px;
+  margin-top: 36rpx;
   width: calc(100%/7);
   text-align: center;
 }
@@ -93,7 +93,7 @@
 .calendar-slot{
   text-align: center;
   font-weight: bolder;
-  height: 24px;
+  height: 48rpx;
 }
 
 .calendar-slot-text{
@@ -103,10 +103,10 @@
 
 .calendar-slot-selected{
   position: relative;
-  width: 35px;
-  height: 35px;
-  border-radius: 100px;
-  margin-top: -29px;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 200rpx;
+  margin-top: -58rpx;
   margin-left: auto;
   margin-right: auto;
   z-index: -1;
@@ -116,31 +116,49 @@
   display: block;
   position: relative;
   width: 100%;
-  height: 40px;
-  margin-top: 20px;
+  height: 80rpx;
+  margin-top: 40rpx;
 }
 
 .calendar-view-contoller-cont{
   width: 100%;
-  height: 40px;
-  padding-top: 15px;
+  height: 80rpx;
+  padding-top: 30rpx;
 }
 
 .calendar-view-contoller-box{
-  width: 40px; 
-  height: 6px; 
-  border-radius: 100px; 
+  width: 80rpx; 
+  height: 12rpx; 
+  border-radius: 200rpx; 
   margin-left: auto;
   margin-right: auto;
   background: rgba(0, 0, 0, 0.3);
 }
 
 .calendar-week-swiper{
-  height: 50px;
+  height: 100rpx;
   width: 100%;
 }
 
 .calendar-all-week{
   display: flex;
   overflow: hidden;
+}
+
+.calendar-view-c-b{
+  width: 100%;
+  height: 80rpx;
+}
+
+.calendar-view-c-btn{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  opacity: 0.1;
+  text-align: center;
+  height: 50rpx;
+}
+
+.calendar-view-c-btn-img{
+  width: 80rpx;
 }

@@ -69,14 +69,17 @@ Page({
   },
 
   getImgs(){
+
     const postReady = {
       uids: this.options.uids
     }
+
     request.genPost(this.data.api_imgs, postReady, (res)=>{
       this.setData({
         memImgs: res.data.data
       })
     })
+    
   },
 
   afterTapDay(e) {
@@ -132,7 +135,7 @@ Page({
     return {
       title: '邀请你加入小组: ' + this.data.gname,
       desc: 'TEAMWORK - 爱丁堡大学日程表小组管理微信工具',
-      path: '/pages/join/join?gid=' + this.data.gid + "&code=" + this.data.gcode + "&n=" + util.getName()
+      path: '/pages/join/join?gid=' + this.data.gid + "&gcode=" + this.data.gcode + "&n=" + util.getName() + "&uids=" + this.options.uids
     }
   },
 

@@ -2,6 +2,42 @@
 #all{
   margin-top: 200rpx;
 }
+
+.guide{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.75);
+  z-index: 9999;
+}
+
+.guide-gif{
+  width: 360rpx;
+  margin-top: 30rpx;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guide-gif-img{
+  width: 320rpx;
+}
+
+.guide-text{
+  width: 100%;
+  font-size: 14px;
+  margin-top: 32rpx;
+  margin-bottom: 24rpx;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.guide-btn{
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+
 .team-single{
   background: #ffffff;
   margin-bottom: 50rpx;

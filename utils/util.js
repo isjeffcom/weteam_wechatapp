@@ -14,8 +14,6 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-
-
 function checkLogin() {
   
   var token = wx.getStorageSync("login_token")
@@ -108,6 +106,18 @@ function getImg() {
   }
 }
 
+function getAccInfo() {
+  const snum = wx.getStorageSync("login_snum")
+  const em = 's' + snum + '@ed.ac.uk'
+  const na = wx.getStorageSync("data_n")
+  if (snum) {
+    return { snum: snum, email: em, name: na }
+  } else {
+    return false
+  }
+}
+
+
 function getGroups() {
   var res = wx.getStorageSync("data_groups")
   if (res) {
@@ -199,15 +209,34 @@ function whereInArr(target, arr){
   return false
 }
 
+function removeEmoji(str){
+  return str.replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g, "")
+}
+
+function logout(){
+  wx.showLoading({
+    title: '正在退出',
+  })
+
+  wx.clearStorage()
+  wx.hideLoading()
+  wx.redirectTo({
+    url: '/pages/index/index',
+  })
+
+}
+
 module.exports = {
   formatTime: formatTime,
   checkLogin: checkLogin,
+  logout: logout,
   getToken: getToken,
   getUUID: getUUID,
   getTT: getTT,
   getGTT: getGTT,
   getName: getName,
   getImg: getImg,
+  getAccInfo: getAccInfo,
   timeEvtMatcher: timeEvtMatcher,
   ifSingleAddZero: ifSingleAddZero,
   getSNum: getSNum,
@@ -218,4 +247,5 @@ module.exports = {
   checkInput: checkInput,
   checkInputNumOnly: checkInputNumOnly,
   constURLParam: constURLParam,
+  removeEmoji: removeEmoji
 }

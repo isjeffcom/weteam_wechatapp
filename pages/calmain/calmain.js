@@ -103,21 +103,51 @@ Page({
 
   update() {
     var that = this
+
+    const snum = util.getSNum()
+    const psw = util.getSNum()
+
     var postData = {
-      u: util.getSNum(),
-      p: util.getPsw(),
+      u: snum,
+      p: psw,
       m: "up"
     }
 
     request.genPost(this.data.api, postData, (res) => {
-      
       if (res.status) {
-        var getData = wx.setStorageSync('data_tt', res.data.data)
+
+        var saveData = wx.setStorageSync('data_tt', res.data.data)
         this.setData({
           allTTData: res.data.data
         })
         this.renderDayEvt()
+
+      } else {
+
+        const err = res.data.err
+
+        if (err.indexOf("unauthorized") != -1) {
+          wx.showToast({
+            title: '密码更改，需重新授权',
+            icon: 'none'
+          })
+          setTimeout(() => {
+            wx.clearStorageSync()
+            wx.redirectTo({
+              url: '/pages/index/index',
+            })
+            return
+          }, 2000)
+        }  else {
+          wx.showToast({
+            title: '网络连接错误',
+            icon: 'none'
+          })
+        }
+        
       }
+
+      
     })
   },
 

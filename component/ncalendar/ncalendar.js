@@ -12,6 +12,33 @@ Component({
       
     },
   },
+
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () {
+      setTimeout(() => {
+        // Init View
+        if (this.data.currentView != this.data.initView) {
+          this.toView(this.data.initView, 320)
+          this.setData({
+            currentView: this.data.initView
+          })
+        }
+      }, 900)
+      /*this.setData({
+        currentView: this.data.initView
+      })*/
+    },
+    hide: function () {
+      if (this.data.currentView != this.data.initView) {
+        this.toView(this.data.initView, 320)
+        this.setData({
+          currentView: this.data.initView
+        })
+      }
+    },
+    resize: function () { },
+  },
   /**
    * 组件的属性列表
    */
@@ -50,17 +77,10 @@ Component({
     cvcOpen: false,
     cvcHeight:28,
     calHeight: 60,
-  },
-
-  ready: function(){
-
-    setTimeout(()=>{
-      // Init View
-      if (this.data.currentView != this.data.initView) {
-        this.toView(this.data.initView, 160)
-      }
-    }, 420)
-    
+    cc_height_mouth: "480rpx",
+    cc_height_week: "80rpx",
+    ct_height_mouth: "32rpx",
+    ct_height_week: "0rpx"
   },
 
   /**
@@ -210,11 +230,11 @@ Component({
 
       if (!this.data.cvcOpen){
         if (this.data.currentView == "mouth" && cP < -25) {
-          this.toView("week", 150)
+          this.toView("week", 320)
         }
 
         if (this.data.currentView == "week" && cP > -10) {
-          this.toView("mouth", 150)
+          this.toView("mouth", 320)
         }
       }
 
@@ -227,6 +247,26 @@ Component({
       })
     },
 
+    btnChangeView(){
+
+      var angle = {
+        start: this.data.currentView == "week" ? 0 : -180,
+        end: this.data.currentView == "week" ? -180 : 0
+      }
+
+      this.toView()
+
+      this.animate('#valendar-view-c-btn', [
+        { rotate: angle.start, ease: "ease-in-out" },
+        { rotate: angle.end, ease: "ease-in-out" }
+      ], 440, function () {
+          this.clearAnimation('#valendar-view-c-btn', {}, function () {
+          // Do nothing...
+        })
+      }.bind(this))
+      
+    },
+
     toView(mode, speed){
       var that = this
 
@@ -234,23 +274,28 @@ Component({
         mode = this.data.currentView == "week" ? "mouth" : "week"
       }
 
+      speed = speed ? speed : 320
+
       this.setCVC(true)
 
       var calContainer = {
         opacity: [1, 0, 1],
-        height: ["240px", "40px", "40px"],
+        height: [this.data.cc_height_mouth, this.data.cc_height_week, this.data.cc_height_week],
         ease: "ease-in-out"
       }
 
       var calControl = {
         opacity: [1, 0],
-        height: ["16px", "0px"],
-        ease: "ease-in-out",
+        height: [this.data.ct_height_mouth, this.data.ct_height_week],
         translate: [
-          [0,0]
-          [0,-30]
-        ]
+          [0, 0]
+          [0, -30]
+        ],
+        ease: "ease-in-out"
       }
+
+      //console.log(calContainer, calControl)
+      
 
       if(mode == "week"){
 
@@ -272,6 +317,9 @@ Component({
     },
 
     toViewAni(ani1, ani2, bol, speed){
+
+      const query = wx.createSelectorQuery()                // 创建节点查询器 query
+      query.select('#calendar-cont').boundingClientRect()
       
       var that = this
 
@@ -294,7 +342,7 @@ Component({
         { opacity: ani1.opacity[2], height: ani1.height[2], ease: "ease-in-out"}
       ], speed, function () {
 
-        this.clearAnimation('#calendar-cont', { opacity: 0 }, function () {
+        this.clearAnimation('#calendar-cont', { }, function () {
           // Do nothing...
         })
 
@@ -304,7 +352,7 @@ Component({
         { opacity: ani2.opacity[0], height: ani2.height[0], ease: "ease-in-out", translate: ani2.translate[0] },
         { opacity: ani2.opacity[1], height: ani2.height[1], ease: "ease-in-out", translate: ani2.translate[1] },
       ], speed*0.3, function () {
-          this.clearAnimation('#calendar-control', { opacity: 0 }, function () {
+          this.clearAnimation('#calendar-control', { }, function () {
             that.setCVC(false)
         })
       }.bind(this))

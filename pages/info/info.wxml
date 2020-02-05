@@ -1,0 +1,55 @@
+<!--pages/info/info.wxml-->
+<titlebar mode="side" position="relative" color="rgba(0,0,0,0)" heightOffset="30" nav="back"></titlebar>
+
+<view class="intro">
+  <view class="intro-top-area">
+    <image class="intro-top-area-img" src="../../assets/imgs/bb.png" mode="widthFix"></image>
+  </view>
+
+  <view class="intro-cont">
+    <view class="intro-logo">
+      <image class="intro-logo-img" src="../../assets/imgs/index_logo.png" mode="widthFix"></image>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-text">
+        目前是一个提供给爱丁堡大学学生使用的课程表和团队管理工具。目前主要具备多人共享课程表的能力。日后着重会开发各类团队协作能力。本小程序非官方产品。
+      </view>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">现有能力</view>
+      <text class="intro-block-text">- 查看你的课程表
+        - 创建团队
+        - 分享团队
+        - 查看队员课程表
+      </text>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">未来能力</view>
+      <text class="intro-block-text">- 团队看板任务管理
+        - 计划分配会议
+        - 公告板
+        - 房间预订
+        - 支持更多学校
+
+      </text>
+      
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">数据安全</view>
+      <text class="intro-block-text">本小程序非常在意你的账号安全，为确保安全，我们不在服务端数据库不会储存你的MyEd登录账号代码。密码只储存在本地，在您更换微信或清理微信缓存时，小程序会要求您重新输入密码。请勿将密码泄露他人。您近6个月的课程表将以明文形式储存在数据库中，这在您使用这个小程序时应有预期。小程序将尽快提供账号删除功能，如有迫切需要可直接联系下方邮箱。
+      </text>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">关于作者</view>
+      <text class="intro-block-text-hint">小程序是个人业余作品，针对非微信用户我会积极开发网页端版本。由于个人时间原因进度时快时慢。小程序长期处于测试阶段，有任何问题请谅解。技术细节：微信小程序原生工具开发，后端采用NodeJs Express实现。后端理论支持所有Office 365账号，由于测试难度问题，暂时只提供给爱丁堡大学学生账户使用，日后可能开放更多学校接入和更多能力接入。/n</text>
+      <text class="intro-block-text-hint">开发者是设计专业，缺乏深厚的代码功底，非常欢迎各位合作。有任何合作，咨询，Bug报告或其他问题，欢迎联系：s1888009@ed.ac.uk。</text>
+    </view>
+
+
+  </view>
+</view>

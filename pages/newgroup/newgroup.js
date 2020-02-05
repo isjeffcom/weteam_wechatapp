@@ -103,13 +103,15 @@ Page({
       return
     }
 
-    if(this.data.groupName.length > 16){
+    if(this.data.groupName.length > 18){
       wx.showToast({
-        title: '小组名称不能超过8个字',
+        title: '小组名称不能超过9个中文或18个英文',
         icon: "none",
       })
       return
     }
+
+    var groupName = util.removeEmoji(this.data.groupName)
 
     wx.showLoading({
       title: '正在创建',
@@ -124,7 +126,7 @@ Page({
     var postReady = {
       uuid: util.getUUID(),
       token: util.getToken(),
-      n: this.data.groupName,
+      n: groupName,
       m: String(mems)
     }
 

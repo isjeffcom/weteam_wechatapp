@@ -1,4 +1,4 @@
 <!--pages/caltestpage/caltestpage.wxml-->
 <!--text>pages/caltestpage/caltestpage.wxml</text-->
-
-<ncal></ncal>
+  <titlebar mode="center" position="relative" color="#ffffff" heightOffset="30" nav="home"></titlebar>
+<!--ncal></ncal-->

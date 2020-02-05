@@ -21,7 +21,8 @@ Page({
     newGState: false,
     lockDown: false,
     allGroupData: {},
-    memsAll: []
+    memsAll: [],
+    isLoading: true
   },
 
   /**
@@ -51,6 +52,7 @@ Page({
       code: this.data.gCode
     }
     request.genPost(this.data.api, postReady, (res)=>{
+
       
       if(res.status){
         var d = res.data.data
@@ -74,8 +76,12 @@ Page({
           isAdm: d.adm == parseInt(util.getUUID()) ? true : false
         })
 
-        if(!this.data.isAdm){
-          this.setData({
+        that.setData({
+          isLoading: false
+        })
+
+        if(!that.data.isAdm){
+          that.setData({
             lockDown: true
           })
         }
@@ -112,19 +118,26 @@ Page({
         memsAll: res.data.data
       })
 
-      console.log(res.data.data)
     })
   },
 
   update(){
 
+    if (this.data.lockDown || this.data.isLoading == true){
+      return
+    }
+
+    if (this.data.newGName.length > 18) {
+      wx.showToast({
+        title: '小组名称不能超过9个中文或18个英文',
+        icon: "none",
+      })
+      return
+    }
+
     wx.showLoading({
       title: '正在保存',
     })
-
-    if(this.data.lockDown){
-      return
-    }
 
     var postReady = {
       gid: this.data.gid,
@@ -141,7 +154,13 @@ Page({
           title: '更新成功',
           icon: "success"
         })
-        this.getGroup()
+
+        setTimeout(()=>{
+          wx.navigateBack({
+            delta: 2
+          })
+        }, 2000)
+
         return
       } else {
         if (res.data.err.indexOf("notadm") != -1) {
@@ -195,7 +214,7 @@ Page({
 
   remove(tid){
 
-    if(!tid){
+    if (!tid || this.data.isLoading == true){
       return
     }
 
@@ -212,7 +231,6 @@ Page({
 
       wx.hideLoading()
 
-      console.log(res)
 
       if (res.status) {
         wx.showToast({
@@ -232,6 +250,11 @@ Page({
   },
 
   del(){
+
+    if (this.data.isLoading == true){
+      return
+    }
+
     wx.showLoading({
       title: '加载中',
     })
@@ -265,7 +288,26 @@ Page({
     })
   },
 
+  leaveAsk(){
+    var that = this
+    wx.showModal({
+      title: '注意',
+      content: '你确定要离开小组吗？离开后可以从分享链接重新进入',
+      success(res) {
+        if (res.confirm) {
+          that.leave()
+        } else if (res.cancel) {
+          // Do nothing...
+        }
+      }
+    })
+  },
+
   leave () {
+
+    if (this.data.isLoading == true){
+      return
+    }
 
     wx.showLoading({
       title: '加载中',

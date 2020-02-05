@@ -29,7 +29,7 @@
 
 .title-bar-back{
   margin-right: 12rpx;
-  margin-top: 10rpx;
+  margin-top: 8rpx;
 }
 
 .title-bar-back-img{
@@ -45,4 +45,9 @@
 .title-bar-home-img{
   width: 46rpx;
   height: 46rpx;
+}
+
+.title-bar-home-center{
+  position: absolute;
+  left: 20rpx;
 }

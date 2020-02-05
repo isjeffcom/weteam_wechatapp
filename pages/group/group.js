@@ -8,7 +8,9 @@ Page({
    */
   data: {
     api: "/group/all",
-    allGroups: []
+    allGroups: [],
+    showGuide: false,
+    countDown: 30,
   },
 
   /**
@@ -25,7 +27,12 @@ Page({
     // If option come with to join url than join
     if(this.options.tojoin){
       this.toJoin(this.options.tojoin)
+      return
     }
+
+    // First Time Open show guideline image
+    this.firstTimeGuide()
+
   },
 
   /**
@@ -33,6 +40,36 @@ Page({
    */
   onShow: function () {
     this.update()
+    
+  },
+
+  firstTimeGuide(){
+    var that = this
+    const check = wx.getStorageSync("guide_group")
+    if(!check){
+      this.setData({
+        showGuide: true
+      })
+    }
+
+    setInterval(()=>{
+      this.setData({
+        countDown: this.data.countDown - 1
+      })
+      if(this.data.countDown <= 0){
+        that.closeGuide()
+      }
+    }, 1000)
+  },
+
+  closeGuide(){
+    wx.setStorage({
+      key: 'guide_group',
+      data: '1',
+    })
+    this.setData({
+      showGuide: false
+    })
   },
 
   update: function () {
@@ -41,11 +78,12 @@ Page({
       uuid: util.getUUID()
     }
     request.genPost(this.data.api, postReady, (res) => {
-      console.log(res.data.data)
+
       if (res.status) {
         
         this.setData({
-          allGroups: res.data.data
+          allGroups: res.data.data,
+          cg: []
         })
 
         wx.setStorage({
@@ -86,7 +124,7 @@ Page({
         val: e.currentTarget.dataset.code
       }
 
-      
+
     ]
 
     console.log(util.constURLParam(par))

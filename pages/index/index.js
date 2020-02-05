@@ -19,6 +19,7 @@ Page({
   },
   onLoad: function () {
     wx.hideShareMenu()
+    wx.clearStorage()
     /*if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -68,9 +69,10 @@ Page({
 
     if (!app.globalData.userInfo) {
       wx.showModal({
-        title: '请授权微信登录',
-        content: '登录是必须的。您可以到：「右上角」 - 「关于」 - 「右上角」 - 「设置」中重新开启授权'
+        title: '请授权登录信息',
+        content: '您可以到：「右上角」 - 「关于」 / 「右上角」 - 「设置」中重新开启登录信息授权'
       })
+      wx.hideLoading()
       return
     }
 
@@ -78,6 +80,9 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+
+    var alias = app.globalData.userInfo.nickName
+    alias = util.removeEmoji(alias)
 
     // 登录
     wx.login({
@@ -94,10 +99,16 @@ Page({
             city: app.globalData.userInfo.city,
             gender: app.globalData.userInfo.gender,
             language: app.globalData.userInfo.language,
-            alias: app.globalData.userInfo.nickName,
+            alias: alias,
             rand: Math.round(Math.random() * 100000)
           },
           success: function (res) {
+
+            wx.hideLoading()
+
+            console.log(app.globalData.userInfo.nickName)
+            //console.log(res)
+            
 
             if(res.data.status){
               // Save login token
@@ -139,11 +150,22 @@ Page({
 
               // Navigate to page
               that.navByStatus(util.checkLogin().status)
+            } else {
+              wx.hideLoading()
+
+              wx.showToast({
+                title: '网络错误，请重试',
+                icon: "none"
+              })
             }
             
           },
           fail: function (err) {
+
+            console.log(err)
+
             wx.hideLoading()
+
             wx.showToast({
               title: '网络错误，请重试',
               icon: "none"
@@ -209,9 +231,17 @@ Page({
 
     }
 
-    else {
-      wx.redirectTo({
-        url: '/pages/banned/banned',
+    else if (status == 99) {
+      wx.showToast({
+        title: '账号被禁止登录，请联系管理员',
+        icon: "none"
+      })
+    }
+
+    else{
+      wx.showToast({
+        title: '网络错误',
+        icon: "none"
       })
     }
   }

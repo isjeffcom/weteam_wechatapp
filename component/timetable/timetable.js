@@ -36,7 +36,6 @@ Component({
       })*/
 
       this.renderEvts(eevt)
-      console.log(eevt)
 
     }
   },
@@ -56,11 +55,13 @@ Component({
     currentInfoIndex: 0,
     ttEvtsDisplay: true,
     screenWidth: 0,
+    screenHeight: 0,
     slotHeight: 60,
     detailOpen: false,
     bugOffset: 6,
     memsAvas: Array,
-    hMems: true
+    hMems: true,
+    aniSpeed: 400
   },
 
   ready: function (e) {
@@ -73,7 +74,8 @@ Component({
 
     this.setData({
       hMems: this.data.hasMems == "f" ? false : true,
-      screenWidth: wx.getSystemInfoSync().windowWidth
+      screenWidth: wx.getSystemInfoSync().windowWidth,
+      screenHeight: wx.getSystemInfoSync().windowHeight
     })
     
     //this.toWeek()
@@ -143,22 +145,66 @@ Component({
 
       var data = e.currentTarget.dataset.d
 
+      const aniSpeed = this.data.aniSpeed
+
       if(!Array.isArray(data)){
         data = [e.currentTarget.dataset.d]
       }
+
+
       this.setData({
         detailOpen: true,
         currentInfo: data,
         currentInfoIndex: 0
       })
+
+      this.animate('#tt-evts-detail', [
+        { opacity: 0, bottom: "-2000px", ease: "ease-in-out" },
+        { opacity: 1, bottom: "0px", ease: "ease-in-out" },
+      ], aniSpeed, function () {
+        this.clearAnimation('#tt-evts-detail', { }, function () {
+
+        })
+      }.bind(this))
+
+      this.animate('#tt-cover', [
+        { opacity: 0, ease: "ease-in-out" },
+        { opacity: 1, ease: "ease-in-out" },
+      ], aniSpeed, function () {
+          this.clearAnimation('#tt-cover', {}, function () {
+
+        })
+      }.bind(this))
+      
       //console.log()
     },
 
     closeDetail(){
-      this.setData({
-        detailOpen: false,
-        currentInfo: []
-      })
+      const aniSpeed = this.data.aniSpeed
+      this.animate('#tt-evts-detail', [
+        { opacity: 1, bottom: "0px", ease: "ease-in-out" },
+        { opacity: 0, bottom: "-2000px", ease: "ease-in-out" },
+      ], aniSpeed, function () {
+        this.clearAnimation('#tt-evts-detail', {}, function () {
+
+        })
+      }.bind(this))
+
+      this.animate('#tt-cover', [
+        { opacity: 1, ease: "ease-in-out" },
+        { opacity: 0, ease: "ease-in-out" },
+      ], aniSpeed, function () {
+        this.clearAnimation('#tt-cover', {}, function () {
+          
+        })
+      }.bind(this))
+
+      setTimeout(() => {
+        this.setData({
+          detailOpen: false,
+          currentInfo: []
+        })
+      }, aniSpeed+10)
     },
 
     // Mutiple Event Detail Popup Controller, next and last
@@ -172,6 +218,8 @@ Component({
         })
       }
 
+      this.evtSwitchAni()
+
       return
     },
 
@@ -184,7 +232,21 @@ Component({
         })
       }
 
+      this.evtSwitchAni()
+
       return
+    },
+
+    evtSwitchAni () {
+      
+      this.animate('.tt-evt-switch-ani', [
+        { opacity: 0, ease: "ease-in-out" },
+        { opacity: 1, ease: "ease-in-out" },
+      ], 160, function () {
+        this.clearAnimation('#tt-evts-detail', {}, function () {
+
+        })
+      }.bind(this))
     },
 
     positionToTimeSlot () {
@@ -194,11 +256,11 @@ Component({
       //now = 8
       var posi = 0
       if(now >= 0 && now < 6){
-        posi = 0
+        posi = 6 * this.data.slotHeight
       } 
 
       else if(now >= 6 && now < 12){
-        posi = 6 * this.data.slotHeight
+        posi = 7 * this.data.slotHeight
       }
 
       else if (now >= 12 && now < 18) {

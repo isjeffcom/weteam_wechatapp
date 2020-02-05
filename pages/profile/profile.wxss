@@ -1,0 +1,75 @@
+/* pages/profile/profile.wxss */
+#all{
+  margin-top: 160rpx;
+}
+
+.title{
+  width: 100%;
+  height: 240rpx;
+  border-bottom: 1px solid rgba(0,0,0,0.09);
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.title-left{
+  margin-left: 32rpx;
+}
+
+.title-right{
+  position: absolute;
+  right: 40rpx;
+  margin-top: -76rpx;
+}
+
+.title-avatar{
+  width: 80rpx;
+  height: 80rpx;
+  overflow: hidden;
+  border-radius: 100rpx;
+}
+
+.title-avatar-img{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.setting-list{
+  margin-top: -20rpx;
+}
+
+.setting-list-s{
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  margin-bottom: 0rpx;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-top: 48rpx;
+  padding-bottom: 32rpx;
+  padding-left: 30rpx;
+}
+
+.title-acc-text{
+  font-size: 30rpx;
+}
+
+.setting-list-icon-img{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.setting-list-icon-text{
+  opacity: 0.85;
+}
+
+.setting-list-item{
+  margin-left: 42rpx;
+  font-size: 20px;
+  margin-top: -4rpx;
+  opacity: .9;
+}
+
+.title-acc{
+  margin-top: 6rpx;
+  margin-left: 32rpx;
+  opacity: 0.5;
+}

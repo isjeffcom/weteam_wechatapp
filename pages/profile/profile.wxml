@@ -1,0 +1,48 @@
+<!--pages/profile/profile.wxml-->
+<text>pages/profile/profile.wxml</text>
+<titlebar mode="side" color="#ffffff" heightOffset="25"></titlebar>
+
+<view id="all">
+
+  <view class="title">
+
+    <view class="title-left">
+      <text class="title-text-1">我的账号</text>
+    </view>
+
+    <view class="title-right">
+      <view class="title-avatar">
+        <image class="title-avatar-img" src="{{ avatar }}"></image>
+      </view>
+    </view>
+
+    <view class="title-acc">
+      <view class="title-acc-text">
+        <text>{{ acc.email }} \n {{ acc.name }}</text>
+      </view>
+    </view>
+  
+  </view>
+
+  <view class="setting-list">
+    <view 
+      class="setting-list-s" 
+      wx:for="{{list}}"
+      wx:for-item="item"
+      wx:for-index="idx"
+      wx:key="idx"
+      bindtap="{{item.action}}">
+
+      <view class="setting-list-icon">
+        <image class="setting-list-icon-img" src="{{item.icon}}"></image>
+      </view>
+
+      <view class="setting-list-item">
+        <text class="setting-list-icon-text">{{item.title}}</text>
+      </view>
+    </view>
+
+
+  </view>
+
+</view>

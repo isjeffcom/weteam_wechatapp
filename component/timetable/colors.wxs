@@ -1,11 +1,15 @@
 var colors = [
   'rgba(2, 119, 249, 1)',
-  'rgba(255, 99, 132, 1)',
-  'rgba(255, 206, 86, 1)',
-  'rgba(75, 192, 192, 1)',
-  'rgba(153, 102, 255, 1)',
-  'rgba(255, 159, 64, 1)'
+  'rgba(96, 59, 244, 1)',
+  'rgba(255, 122, 0, 1)',
+  'rgba(8, 201, 85, 1)',
+  'rgba(122, 59, 295, 1)',
+  'rgba(255, 94, 84, 1)',
+  'rgba(79, 213, 55, 1)'
 ]
+
+var color = "rgba(88, 88, 88, 1)"
+
 var setColor = function (index) {
 
   if(!index){
@@ -18,6 +22,11 @@ var setColor = function (index) {
 
   return colors[index];
 }
+
+var getEvtsColor = function () {
+  return color
+}
 module.exports = {
   setColor: setColor,
+  getEvtsColor: getEvtsColor
 };

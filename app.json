@@ -9,7 +9,10 @@
     "pages/groupdetail/groupdetail",
     "pages/caltestpage/caltestpage",
     "pages/join/join",
-    "pages/groupadmin/groupadmin"
+    "pages/groupadmin/groupadmin",
+    "pages/profile/profile",
+    "pages/info/info",
+    "pages/settings/settings"
   ],
   "tabBar": {
     "list": [
@@ -24,6 +27,12 @@
         "text": "",
         "iconPath": "assets/imgs/team.png",
         "selectedIconPath": "assets/imgs/team_s.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "",
+        "iconPath": "assets/imgs/setting.png",
+        "selectedIconPath": "assets/imgs/setting_s.png"
       }
     ]
   },

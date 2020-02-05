@@ -86,7 +86,7 @@
 					"id": 4,
 					"name": "pages/groupdetail/groupdetail",
 					"pathName": "pages/groupdetail/groupdetail",
-					"query": "gid=26&code=1018&gname=DMSP Group",
+					"query": "gid=26&code=1018&uids=10,12&gname=DMSP Group",
 					"scene": null
 				},
 				{
@@ -100,7 +100,7 @@
 					"id": 6,
 					"name": "pages/join/join",
 					"pathName": "pages/join/join",
-					"query": "gid=16&gcode=1014&n=jianfeng wu",
+					"query": "gid=33&gcode=1025&n=ma jiajun",
 					"scene": null
 				},
 				{
@@ -129,6 +129,27 @@
 					"name": "pages/groupadmin/groupadmin",
 					"pathName": "pages/groupadmin/groupadmin",
 					"query": "gid=26&code=1018&n=DMSP Group",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/info/info",
+					"pathName": "pages/info/info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/settings/settings",
+					"pathName": "pages/settings/settings",
+					"query": "",
 					"scene": null
 				}
 			]

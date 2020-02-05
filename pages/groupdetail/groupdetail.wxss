@@ -1,59 +1,57 @@
 .group-info{
   position: fixed;
-  height: 60px;
+  height: 120rpx;
   width: 100%;
-  top:0px;
+  top: 0rpx;
   background: #fafafa;
   z-index: 99;
-  margin-top: 90px;
+  margin-top: 180rpx;
 }
 
 .group-info-inner{
-  margin-top: 16px;
+  margin-top: 32rpx;
 }
 
 .group-info-invt{
   margin-right: 24rpx;
-  margin-top: -8rpx;
+  margin-top: -7rpx;
 }
 
 .group-info-invt-btn{
   border: 1px solid #0277F9;
   background: rgba(0,0,0,0);
   color: #0277F9;
-  height: 20rpx !important;
+  height: 72rpx !important;
   width: 140rpx !important;
-  padding: 18rpx !important;
+  padding: 16rpx !important;
   border-radius: 8rpx !important;
   padding-left: 22rpx;
   padding-right: 22rpx;
   font-size: 15px;
 }
 
-
-
 .group-info-left{
   display: flex;
   width: 50%;
-  padding-left: 20px;
+  padding-left: 40rpx;
 }
 
 .group-info-icon-img{
-  width: 36px;
-  height: 36px;
+  width: 72rpx;
+  height: 72rpx;
 }
 
 .group-info-name{
-  margin-top: 6px;
-  margin-left: 8px;
+  margin-top: 12rpx;
+  margin-left: 16rpx;
   font-size: 16px;
 }
 
 .group-info-right{
   position: fixed;
   display: flex;
-  right: 20px;
-  top: 108px;
+  right: 40rpx;
+  top: 218rpx;
 }
 
 .group-info-users {
@@ -61,40 +59,40 @@
 }
 
 .group-info-users-s{
-  width: 30px;
-  height: 30px;
-  border-radius: 100px;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 200rpx;
   margin-right: -26rpx;
   overflow: hidden;
 }
 
 .group-info-users-s-img{
-  width: 30px;
-  height: 30px;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .group-info-count{
-  margin-left: 24rpx;
-  margin-top: 5px;
-  opacity: .6;
+  margin-left: 32rpx;
+  margin-top: 10rpx;
+  opacity: .5;
 }
 
 
 .cal-cont{
   position: fixed;
   width: 100%;
-  top: 60px;
+  top: 120rpx;
   background: rgba(255,255,255,1);
   z-index: 99;
-  margin-top: 90px;
+  margin-top: 180rpx;
 }
 
 .tt-cont{
-  margin-top:270px;
+  margin-top: 540rpx;
 }
 
 .cal-view-switcher{
-  height: 20px;
+  height: 40rpx;
   width: 100%;
   text-align: center;
   background:#F6F6F6;

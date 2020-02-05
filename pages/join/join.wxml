@@ -1,7 +1,7 @@
 <!--pages/join/join.wxml-->
 <view id="join">
 
-  <titlebar mode="center" position="relative" color="#ffffff" heightOffset="30"></titlebar>
+  <titlebar mode="center" position="relative" color="#ffffff" heightOffset="30" nav="home"></titlebar>
 
   <view class="invi">
     <view class="invi-inner">

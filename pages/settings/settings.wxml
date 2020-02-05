@@ -1,0 +1,47 @@
+<!--pages/settings/settings.wxml-->
+<titlebar mode="side" position="relative" color="#ffffff" heightOffset="30" nav="back"></titlebar>
+
+
+<view class="settings" id="settings">
+
+  <view class="title">
+
+    <view class="title-left">
+      <text class="title-text-1">设置</text>
+    </view>
+
+  </view>
+
+  <view class="settings-cont">
+
+    <view class="settings-s">
+
+      <view class="setting-left">
+        <view class="setting-title">
+          隐私保护
+        </view>
+
+        <view class="setting-line">
+          其他成员无法查看日程内容
+        </view>
+      </view>
+
+      <view class="setting-right">
+        <switch 
+          checked="{{ privacy }}" 
+          disabled="{{ isLoading }}" 
+          color="#0277F9"
+          style="opacity: {{ isloading ? 0.5 : 1}}"
+          bindchange="privacyChangeAsk"></switch>
+      </view>
+        
+
+    </view>
+
+    <view class="logout">
+      <button bindtap="logout" style="background: #F3F3F3 !important; color: #F24C4C !important;">退出登录</button>
+    </view>
+
+  </view>
+
+</view>

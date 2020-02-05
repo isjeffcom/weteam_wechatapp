@@ -23,6 +23,7 @@ Page({
   onLoad: function (options) {
 
     var req = {}
+
     // If is coming back from auth
     if (this.options.tojoin){
       req = JSON.parse(decodeURIComponent(this.options.tojoin))
@@ -38,6 +39,8 @@ Page({
       gcode: this.options.gcode ? this.options.gcode : req.code,
       uname: this.options.n ? this.options.n : req.name
     })
+
+    console.log(this.options.gcode)
 
     this.getGroupInfo()
   },
@@ -69,6 +72,7 @@ Page({
         d.memsArr = dm
         d.memsCount = dm.length
       } else {
+        d.memsArr = [String(d.members)]
         d.memsCount = 1
       }
       
@@ -79,6 +83,7 @@ Page({
       if(this.data.autoJoin){
         this.joinCheck()
       }
+
     })
   },
 
@@ -113,18 +118,29 @@ Page({
       gid: gid
     }
 
+    console.log(uids)
+
     request.genPost(this.data.api_join, postReady, (res)=>{
       console.log(res)
       wx.hideLoading()
       if(res.status){
+
         uids.push(postReady.uuid)
+
+        console.log(uids)
+
         wx.showToast({
           title: '加入成功',
           icon: 'success'
         })
-        wx.redirectTo({
-          url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&gname=' + gname + '&join=' + 't'
-        })
+        
+
+        setTimeout(()=>{
+          wx.redirectTo({
+            url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&gname=' + gname + '&join=' + 't'
+          })
+        }, 1000)
+        
         return
       } else {
         var err = res.data.err

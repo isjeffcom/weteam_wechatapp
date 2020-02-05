@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "ncal": "/component/ncalendar/ncalendar",
     "titlebar": "/component/titlebar/titlebar"
   }
 }

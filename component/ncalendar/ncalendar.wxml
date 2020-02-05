@@ -142,7 +142,13 @@
 
   </view>
 
-  <movable-area 
+  <view class="calendar-view-c-b">
+    <view class="calendar-view-c-btn" id="valendar-view-c-btn" bindtap="btnChangeView">
+      <image class="calendar-view-c-btn-img" src="./assets/arrow.svg" mode="widthFix"></image>
+    </view>
+  </view>
+
+  <!--movable-area 
       class="calendar-view-contoller" 
       scale-area
       style="height: {{ cvcHeight }}px;">
@@ -160,6 +166,6 @@
         <view class="calendar-view-contoller-box"></view>
       </movable-view>
         
-    </movable-area>
+    </movable-area-->
 
 </view>

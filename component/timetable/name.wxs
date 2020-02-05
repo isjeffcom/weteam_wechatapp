@@ -1,4 +1,7 @@
 var setName = function (str, height) {
+  if (!str) {
+    return
+  }
 
   var length = Math.floor((height / 60) * 32)
   if (str.length > length){
@@ -9,6 +12,9 @@ var setName = function (str, height) {
 }
 
 var limitName = function (str, length){
+  if(!str){
+    return
+  }
   if (str.length > length) {
     str = str.slice(0, length) + "..."
   }
