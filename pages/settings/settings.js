@@ -53,7 +53,7 @@ Page({
     })
 
     var postReady = {
-      open: bol ? 1 : 0
+      open: bol ? 0 : 1
     }
 
     request.genPost(this.data.api_tt_up, postReady, (res)=>{
@@ -81,7 +81,19 @@ Page({
   },
 
   logout(){
-    util.logout()
+    wx.showModal({
+      title: '确定退出？',
+      content: '退出将回到登录页面，您可以重新登录',
+      success(res) {
+        if (res.confirm) {
+          util.logout()
+        } else if (res.cancel) {
+          // nothing happened
+          return
+        }
+      }
+    })
+    
   },
 
 

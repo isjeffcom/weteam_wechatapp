@@ -50,6 +50,7 @@
           data-n="{{ item.name }}"
           data-uids="{{ item.members }}"
           data-code="{{ item.code }}"
+          data-open="{{ item.open }}"
           bindtap="toDetail"
           class="team-single">
 

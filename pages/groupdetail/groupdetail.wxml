@@ -19,17 +19,19 @@
         <view class="group-info-users">
 
           <view class="group-info-invt">
-            <button class="group-info-invt-btn" open-type="share"> + 邀请</button>
+            <button class="group-info-invt-btn" wx:if="{{ gopen }}" open-type="share"> + 邀请</button>
+            <view wx:if="{{ !gopen }}" style="opacity: 0.25;margin-top:15rpx;">私密</view>
           </view>
 
           <view 
-          class="group-info-users-s"
-          wx:for="{{ memImgs }}"
-          wx:for-index="idx"
-          wx:for-item="item" 
-          wx:key="idx">
+            class="group-info-users-s"
+            wx:for="{{ memImgs }}"
+            wx:for-index="idx"
+            wx:for-item="item" 
+            wx:key="idx"
+            wx:if="{{ idx <= 2}}">
 
-          <image class="group-info-users-s-img" src="{{ item.img }}" wx:if="{{ idx <= 1}}"></image>
+          <image class="group-info-users-s-img" src="{{ item.img }}"></image>
           
           </view>
           
@@ -62,8 +64,6 @@
       hasMems="t">
     </timetable>
   </view>
-
-  <button style="margin-top: 20px; margin-bottom: 20px" bindtap="update">更新</button>
 
 
 </view>

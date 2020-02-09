@@ -40,8 +40,6 @@ Page({
       uname: this.options.n ? this.options.n : req.name
     })
 
-    console.log(this.options.gcode)
-
     this.getGroupInfo()
   },
 
@@ -111,6 +109,7 @@ Page({
   },
 
   join(gid, uids, gname){
+    var that = this
     wx.showLoading()
 
     var postReady = {
@@ -118,16 +117,11 @@ Page({
       gid: gid
     }
 
-    console.log(uids)
-
     request.genPost(this.data.api_join, postReady, (res)=>{
-      console.log(res)
       wx.hideLoading()
       if(res.status){
 
         uids.push(postReady.uuid)
-
-        console.log(uids)
 
         wx.showToast({
           title: '加入成功',
@@ -137,7 +131,7 @@ Page({
 
         setTimeout(()=>{
           wx.redirectTo({
-            url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&gname=' + gname + '&join=' + 't'
+            url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&open=' + that.data.groupData.open + '&gname=' + gname + "&code=" + that.data.gcode + '&join=' + 't'
           })
         }, 1000)
         
@@ -149,7 +143,7 @@ Page({
           console.log("Already in the group")
 
           wx.redirectTo({
-            url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&gname=' + gname + '&join=' + 't'
+            url: '/pages/groupdetail/groupdetail?gid=' + gid + '&uids=' + String(uids) + '&open=' + that.data.groupData.open + '&gname=' + gname + "&code=" + that.data.gcode + '&join=' + 't'
           })
 
           return

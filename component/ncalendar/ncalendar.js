@@ -19,19 +19,19 @@ Component({
       setTimeout(() => {
         // Init View
         if (this.data.currentView != this.data.initView) {
-          this.toView(this.data.initView, 320)
+          this.toView(this.data.initView, 360)
           this.setData({
             currentView: this.data.initView
           })
         }
-      }, 900)
+      }, 880)
       /*this.setData({
         currentView: this.data.initView
       })*/
     },
     hide: function () {
       if (this.data.currentView != this.data.initView) {
-        this.toView(this.data.initView, 320)
+        this.toView(this.data.initView, 360)
         this.setData({
           currentView: this.data.initView
         })
@@ -77,7 +77,7 @@ Component({
     cvcOpen: false,
     cvcHeight:28,
     calHeight: 60,
-    cc_height_mouth: "480rpx",
+    cc_height_mouth: "560rpx",
     cc_height_week: "80rpx",
     ct_height_mouth: "32rpx",
     ct_height_week: "0rpx"
@@ -317,9 +317,6 @@ Component({
     },
 
     toViewAni(ani1, ani2, bol, speed){
-
-      const query = wx.createSelectorQuery()                // 创建节点查询器 query
-      query.select('#calendar-cont').boundingClientRect()
       
       var that = this
 

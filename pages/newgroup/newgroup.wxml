@@ -17,7 +17,7 @@
   </view>
 
   <view class="members-cont">
-
+    
     <view 
       wx:for="{{ members }}" 
       wx:for-index="idx"
@@ -39,6 +39,10 @@
     <view class="members-add" bindtap="tapToOverlay">
       <view class="members-add-text"> + 添加小组成员</view>
     </view>
+  </view>
+
+  <view class="title-text-3" style="margin-top: 40rpx;">
+    <text>稍后群邀请组员加入更方便</text>
   </view>
 
   <view class="form-submit">

@@ -1,5 +1,10 @@
 /* pages/connect/connect.wxss */
 
+.connect{
+  width: 100%;
+  overflow: hidden;
+}
+
 input{
   width: 90%;
   font-size: 24px;
@@ -22,6 +27,16 @@ input{
 .connect-window{
   width: 100%;
   margin-top: 60rpx;
+}
+
+.connect-safe{
+  position: relative;
+  margin-bottom: 10rpx;
+  margin-top: 30rpx;
+}
+
+.connect-safe-img{
+  width: 180rpx;
 }
 
 #stuNumInput{

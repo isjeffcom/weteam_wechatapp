@@ -1,5 +1,8 @@
 /* pages/settings/settings.wxss */
-
+.settings{
+  width: 100%;
+  overflow: hidden;
+}
 .settings-s{
   height: 100rpx;
   border-bottom: 2rpx solid rgba(0,0,0,0.08);

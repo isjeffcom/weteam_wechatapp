@@ -1,0 +1,51 @@
+<!--pages/info/info.wxml-->
+<titlebar mode="side" color="rgba(255,255,255,1)" heightOffset="30" nav="back"></titlebar>
+
+<view class="intro" id="intro">
+
+  <view class="intro-cont">
+
+    <view class="title">
+
+      <view class="title-left">
+        <text class="title-text-1" style="margin-left: -40rpx;">用户使用及隐私条款</text>
+      </view>
+
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">1、开发方责任</view>
+      <text class="intro-block-text">
+        1-1 应用程序开发方(以下简称开发方)有责任力所能及的保证个人隐私及数据安全。
+        1-2 开发方尽力确保用户的隐私设置可控有效。
+        1-3 开发方尽力确保各项功能服务的完整和有效。
+        1-4 开发方尽力及时的处理用户反馈。
+        1-5 开发方尽力满足用户对数据全面清除的要求(邮件申请：s1888009@ed.ac.uk)。
+        1-6 开发方在任何情况不在服务器保存MyEd账户密码，密码仅存与用户本地。
+        1-7 开发方确保不收集，使用任何与服务无关的用户数据，1-8中提及的除外。
+        1-8 开发方会从平台方获取一定的脱敏后的账号数据，包括但不限于：头像，昵称，性别等。
+
+      </text>
+    </view>
+
+    <view class="intro-block">
+      <view class="intro-block-title">2、用户义务</view>
+      <text class="intro-block-text">
+        2-1 用户不得恶意攻击，破解，逆向工程本应用程序的程序，代码和数据。
+        2-2 用户不得使用本应用进行违反中华人民共和国，及大不列颠及北爱尔兰联合王国的法律法规
+        2-3 用户不得利用本应用提供的数据，做出任何违背2-2及侵犯人权隐私，和违背道德的行为。
+        2-4 用户不得利用本应用提供的数据及接口，进行二次开发和调用，除非事先获得开发方许可。
+        2-5 用户不得利用漏洞干扰，影响或破坏本应用正常运作。
+        2-6 用户登录及同意将近期6个月课程表的部分数据公开展示。
+        2-7 用户理解本应用处于测试阶段，软件错误和数据丢失是可能出现的。
+        2-8 用户同意不基于2-7中陈述的事实为理由，公开攻击应用开发方。
+
+      </text>
+      
+    </view>
+
+    <button bindtap="back">我知道了</button>
+
+
+  </view>
+</view>

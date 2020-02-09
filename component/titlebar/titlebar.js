@@ -33,10 +33,13 @@ Component({
 
   ready: function () {
     const h = wx.getSystemInfoSync().windowHeight
+
+    var topMod = this.data.position == 'relative' ? 0.12315 : 0.135
     this.setData({
       heightOffset: this.data.heightOffset < 40 ? this.data.heightOffset : 40,
-      titlePaddingTop: (Math.ceil(h * 0.12315)) - this.data.topOffset
+      titlePaddingTop: (Math.ceil(h * topMod)) - this.data.topOffset
     })
+
   },
 
   /**

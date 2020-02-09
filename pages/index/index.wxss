@@ -20,6 +20,11 @@
   margin-top: 200px;
 }*/
 
+.intro{
+  width: 100%;
+  overflow: hidden;
+}
+
 .intro-top-area{
   position: absolute;
   top:0px;

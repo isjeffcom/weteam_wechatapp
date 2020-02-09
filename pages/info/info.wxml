@@ -1,7 +1,7 @@
 <!--pages/info/info.wxml-->
-<titlebar mode="side" position="relative" color="rgba(0,0,0,0)" heightOffset="30" nav="back"></titlebar>
+<titlebar mode="side" color="rgba(0,0,0,0)" heightOffset="30" nav="back"></titlebar>
 
-<view class="intro">
+<view class="intro" id="intro">
   <view class="intro-top-area">
     <image class="intro-top-area-img" src="../../assets/imgs/bb.png" mode="widthFix"></image>
   </view>

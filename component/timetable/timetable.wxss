@@ -6,7 +6,7 @@
 
 .tt-cover{
   position: fixed;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.6);
   width: 100%;
   height: 100%;
   z-index: 9998;
@@ -192,8 +192,12 @@
   margin-left: 48rpx;
   margin-right: 48rpx;
   background: rgba(255,255,255,1);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.18);
   border-radius: 200rpx;
+}
+
+.tt-evts-detail-c:active{
+  background: rgba(238,238,238,1);
 }
 
 .tt-evts-detail-c-icon{
@@ -201,7 +205,7 @@
   height: 44rpx;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 8px;
+  margin-top: 19rpx;
 }
 
 .tt-evts-detail-c-icon-img{

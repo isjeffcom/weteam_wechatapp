@@ -9,7 +9,8 @@ Page({
   data: {
     api: "/init",
     username: "",
-    password: ""
+    password: "",
+    sEnabled: false
   },
 
   /**
@@ -33,71 +34,39 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   inpStuNum: function (e) {
+    
     this.setData({
       username: e.detail.value
     })
   },
 
   inpPsw: function (e) {
+
+    if (e.detail.value.length > 0) {
+      this.setData({
+        sEnabled: true
+      })
+    } else {
+      this.setData({
+        sEnabled: false
+      })
+    }
+
     this.setData({
       password: e.detail.value
     })
   },
 
   toConnect: function () {
+    
+    if(this.data.sEnabled == false){
+      return
+    }
+
     wx.showLoading({ title: '验证中', icon: 'loading' });
 
-    var that = this
+    var that = this 
     if (this.data.username.length > 0 && this.data.password.length > 0){
 
       var token = util.getToken()
@@ -106,6 +75,8 @@ Page({
       var postData = {
         u: this.data.username,
         p: this.data.password,
+        token: token,
+        uuid: uuid,
         m: "init"
       }
 
@@ -113,14 +84,25 @@ Page({
 
         wx.hideLoading()
 
-        console.log(res)
-
         if(res.status){
+
           var saveData = wx.setStorageSync("data_tt", res.data.data)
           var saveName = wx.setStorageSync("data_n", res.data.name)
           var saveSNum = wx.setStorageSync("login_snum", that.data.username)
-          var savePsw = wx.setStorageSync("login_psw", that.data.password)
+          //var savePsw = wx.setStorageSync("login_psw", that.data.password)
+          var saveEncPsw = wx.setStorageSync("login_psw", res.data.encPsw)
+          var saveEncPswState = wx.setStorageSync("psw_enc", true)
           var setStatus = wx.setStorageSync("login_status", res.data.userStatus)
+
+          if (res.data.testAcc) {
+            wx.setStorageSync("login_psw", "locked")
+            wx.setStorageSync("login_snum", "locked")
+            wx.setStorageSync("login_token", res.data.fakeToken)
+            wx.setStorageSync("login_uuid", res.data.fakeUUID)
+            wx.setStorageSync("login_img", res.data.fakeIMG)
+            wx.setStorageSync("data_groups", res.data.fakeGroups)
+            wx.setStorageSync("test_acc", true)
+          }
 
           if(this.options.tojoin){
             wx.redirectTo({
@@ -143,8 +125,6 @@ Page({
           })
           
         }
-
-
         
       })
 

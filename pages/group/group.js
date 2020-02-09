@@ -39,8 +39,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.update()
     
+    /*this.animate('#all', [
+      { opacity: 0, ease: "ease-in-out" },
+      { opacity: 1, ease: "ease-in-out" },
+    ], 400, function () {
+        this.clearAnimation('#all', {}, function () {
+
+      })
+    }.bind(this))*/
+
+    this.update()
   },
 
   firstTimeGuide(){
@@ -74,10 +83,13 @@ Page({
 
   update: function () {
 
+
     var postReady = {
       uuid: util.getUUID()
     }
     request.genPost(this.data.api, postReady, (res) => {
+
+      console.log(res)
 
       if (res.status) {
         
@@ -118,6 +130,10 @@ Page({
       {
         key: "uids",
         val: e.currentTarget.dataset.uids
+      },
+      {
+        key: "open",
+        val: e.currentTarget.dataset.open
       },
       {
         key: "code",

@@ -51,6 +51,8 @@ Page({
       gid: this.data.gid,
       code: this.data.gCode
     }
+
+    console.log(postReady)
     request.genPost(this.data.api, postReady, (res)=>{
 
       
@@ -197,7 +199,6 @@ Page({
 
   removeAsk(e){
     const tid = e.currentTarget.dataset.id
-    console.log(e.currentTarget.dataset.id)
     var that = this
     wx.showModal({
       title: '注意',

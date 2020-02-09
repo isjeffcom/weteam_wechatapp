@@ -1,5 +1,5 @@
 <!--pages/connect/connect.wxml-->
-<view id="connect">
+<view class="connect" id="connect">
 
   <titlebar mode="side" position="relative" color="#ffffff"></titlebar>
   
@@ -9,6 +9,12 @@
       <view class="connect-title-text">连接至MyEd账户</view>
       <view class="connect-title-line">输入正确的学号与密码</view>
     </view>
+
+
+    <view class="connect-safe">
+      <image class="connect-safe-img" src="https://i.ibb.co/z2JqBpF/safe.png" mode="widthFix"></image>
+    </view>
+
 
     <view class="connect-window">
       <view class="cw-username">
@@ -36,7 +42,7 @@
     </view>
 
     <view class="cw-btn">
-      <button bindtap="toConnect">开始连接</button>
+      <button bindtap="toConnect" style="background:{{sEnabled ? '#0277F9' : '#888888'}};">开始连接</button>
     </view>
 
   </view>

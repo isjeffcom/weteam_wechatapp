@@ -9,11 +9,12 @@ Page({
     api: '/init',
     allTTData: [],
     currentEvtArr: [],
-    currentView: "week"
+    currentView: "week",
+    hasUpdated: false,
   },
 
   onLoad: function(){
-    wx.hideShareMenu()
+
   },
 
   /**
@@ -46,17 +47,29 @@ Page({
       allTTData: util.getTT()
     })
 
-
     this.renderDayEvt()
 
-    /*var test = { day: 1, week: 6, mouth: 1, year: 2020 }
-    this.afterTapDay(test)*/
+  },
 
-    //this.calendar.switchView('week').then(() => { });
-    //this.renderDayEvt(this.calendar.getSelectedDay())
+  onShow () {
+    /*this.animate('#calmain', [
+      { opacity: 0, ease: "ease-in-out" },
+      { opacity: 1, ease: "ease-in-out" },
+    ], 400, function () {
+        this.clearAnimation('#calmain', {}, function () {
+
+      })
+    }.bind(this))*/
   },
 
   renderDayEvt (date) {
+
+    var that = this
+
+    const ttLastUp = wx.getStorageSync("tt_lastUp")
+    const currentTs = new Date().getTime()
+    const expire = 7 * (24 * (60 * (60 * 1000))) //7 day
+    //const expire = 0
     
     if(!date){
       var tod = new Date()
@@ -70,16 +83,26 @@ Page({
         currentEvtArr: evtData.data
       })
     }
+
+    // If data expired 
+    if (!this.data.hasUpdated && currentTs - ttLastUp > expire) {
+
+      request.updateTT((res) => {
+        that.setData({
+          hasUpdated: true
+        })
+      })
+    }
   },
 
   getEvt(sDate){
-    
+
     // Get data from local storage
     var tt = this.data.allTTData
 
-    if(tt){
+    if (tt) {
       // sometime is an arr, so get the 1st one(only one)
-      if (Array.isArray(sDate)){
+      if (Array.isArray(sDate)) {
         sDate = sDate[0]
       }
 
@@ -90,65 +113,27 @@ Page({
       var res = util.timeEvtMatcher(tar, tt)
 
       // Return
-      return {status: true, count: res.length, data: res}
+      return { status: true, count: res.length, data: res }
 
     } else {
       // If no timetable data from storage, get new
-      this.update()
-      return { status: false, count: 0, data: "no timetable data, try to get data" }
-      
-    }
-    
-  },
+      request.updateTT((res) => {
 
-  update() {
-    var that = this
+        if (res.data.status) {
 
-    const snum = util.getSNum()
-    const psw = util.getSNum()
+          var result = res.data.data
 
-    var postData = {
-      u: snum,
-      p: psw,
-      m: "up"
-    }
+          that.renderDayEvt(sDate)
 
-    request.genPost(this.data.api, postData, (res) => {
-      if (res.status) {
+          return { status: false, count: 0, data: "updating" }
 
-        var saveData = wx.setStorageSync('data_tt', res.data.data)
-        this.setData({
-          allTTData: res.data.data
-        })
-        this.renderDayEvt()
+        } else {
 
-      } else {
+          return { status: false, count: 0, data: "no timetable data" }
 
-        const err = res.data.err
-
-        if (err.indexOf("unauthorized") != -1) {
-          wx.showToast({
-            title: '密码更改，需重新授权',
-            icon: 'none'
-          })
-          setTimeout(() => {
-            wx.clearStorageSync()
-            wx.redirectTo({
-              url: '/pages/index/index',
-            })
-            return
-          }, 2000)
-        }  else {
-          wx.showToast({
-            title: '网络连接错误',
-            icon: 'none'
-          })
         }
-        
-      }
-
-      
-    })
+      })
+    }
   },
 
   /**
@@ -156,6 +141,17 @@ Page({
    */
   afterTapDay(e) {
     this.renderDayEvt(e.detail)
+  },
+
+  // Share Mini App
+  onShareAppMessage: function () {
+
+    return {
+      title: '爱大共享课程表，让小组协作更高效',
+      desc: 'TEAMWORK - 爱丁堡大学日程表小组管理微信工具',
+      path: '/pages/calmain/calmain'
+    }
+
   },
 
 })

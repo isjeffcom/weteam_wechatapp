@@ -23,6 +23,11 @@ Page({
         action: "toInfo"
       },
       {
+        title: "使用条款",
+        icon: "../../assets/imgs/article.svg",
+        action: "toTerms"
+      },
+      {
         title: "设置",
         icon: "../../assets/imgs/settings.svg",
         action: "toSetting"
@@ -43,65 +48,14 @@ Page({
       acc: util.getAccInfo(),
       avatar: util.getImg()
     })
-
-    console.log(util.getAccInfo())
   },
 
   update(){
-
     wx.showLoading({
       title: '正在更新',
     })
-
-    var that = this
-    var postData = {
-      u: util.getSNum(),
-      p: util.getPsw(),
-      m: "up"
-    }
-
-    request.genPost(this.data.api, postData, (res) => {
+    request.updateTT((res)=>{
       wx.hideLoading()
-
-      if (res.status) {
-        var getData = wx.setStorageSync('data_tt', res.data.data)
-
-        wx.showToast({
-          title: '更新成功',
-          icon: 'success'
-        })
-
-      } else {
-        const err = res.data.err
-
-        if (err.indexOf("unauthorized") != -1){
-          wx.showToast({
-            title: '密码更改，需重新授权',
-            icon: 'none'
-          })
-          setTimeout(()=>{
-            wx.clearStorageSync()
-            wx.redirectTo({
-              url: '/pages/index/index',
-            })
-          }, 2000)
-        } 
-        
-        else if (err.indexOf("testacc") != -1) {
-          wx.showToast({
-            title: '更新完毕',
-            icon: 'none'
-          })
-        }
-        
-        else {
-          wx.showToast({
-            title: '网络连接错误',
-            icon: 'none'
-          })
-        }
-        
-      }
     })
   },
 
@@ -128,7 +82,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.animate('#all', [
+      { opacity: 0, ease: "ease-in-out" },
+      { opacity: 1, ease: "ease-in-out" },
+    ], 400, function () {
+      this.clearAnimation('#all', {}, function () {
 
+      })
+    }.bind(this))
+  },
+
+  toTerms(){
+    wx.navigateTo({
+      url: '/pages/terms/terms',
+    })
   },
 
   /**

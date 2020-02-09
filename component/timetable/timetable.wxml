@@ -131,6 +131,8 @@
         <text wx:if="{{ currentInfo[currentInfoIndex].hide }}" style="opacity: 0.5;font-size: 14px;">用户开启隐私保护，不显示名称地点</text>
       </view>
 
+
+
     </view>
 
     <!-- Multiple Events Swiper -->

@@ -12,7 +12,8 @@
     "pages/groupadmin/groupadmin",
     "pages/profile/profile",
     "pages/info/info",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/terms/terms"
   ],
   "tabBar": {
     "list": [
@@ -42,6 +43,9 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
+  },
+  "networkTimeout": {
+    "request": 10000
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

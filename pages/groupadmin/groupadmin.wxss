@@ -1,6 +1,7 @@
 /* pages/groupadmin/groupadmin.wxss */
 
 #groupadmin{
+  margin-top: 200rpx;
   padding: 32rpx;
 }
 

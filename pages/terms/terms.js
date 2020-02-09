@@ -1,4 +1,4 @@
-// pages/info/info.js
+// pages/terms/terms.js
 Page({
 
   /**
@@ -22,11 +22,15 @@ Page({
 
   },
 
+  back(){
+    wx.navigateBack()
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

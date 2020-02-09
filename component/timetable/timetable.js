@@ -2,11 +2,7 @@ var util = require('../../utils/util.js')
 var timeProcessing = require('../../utils/time.js')
 var testData = require('../../utils/testData.js')
 Component({
-  lifetimes: {
-    attached: function (e) {
-      
-    },
-  },
+
   /**
    * 组件的属性列表
    */
@@ -61,11 +57,11 @@ Component({
     bugOffset: 6,
     memsAvas: Array,
     hMems: true,
-    aniSpeed: 400
+    startAniDone: false,
+    aniSpeed: 540
   },
 
   ready: function (e) {
-    this.positionToTimeSlot()
     this.currentTime()
 
     setInterval(()=>{
@@ -77,6 +73,8 @@ Component({
       screenWidth: wx.getSystemInfoSync().windowWidth,
       screenHeight: wx.getSystemInfoSync().windowHeight
     })
+
+    this.positionToTimeSlot()
     
     //this.toWeek()
     //console.log(this.data.events)
@@ -89,6 +87,8 @@ Component({
   methods: {
     renderEvts (data) {
 
+      var that = this
+
       // Use test data here
       //var evts = this.parseEvtsTop(testData.ttTestData)
 
@@ -100,6 +100,29 @@ Component({
         ttEvtsDisplay: true
       })
 
+      
+      /*setTimeout(()=>{
+        this.startAni()
+      }, 400)*/
+
+    },
+
+    startAni(){
+      // Events display animation
+      if (!this.data.startAniDone) {
+        this.setData({
+          startAniDone: true
+        })
+
+        this.animate('.tt-evts-single', [
+          { opacity: 0, offset: 1, ease: "ease-in-out" },
+          { opacity: 1, offset: 1, ease: "ease-in-out" },
+        ], 600, function () {
+          this.clearAnimation('.tt-evts-single', {}, function () {
+
+          })
+        }.bind(this))
+      }
     },
 
     parseEvtsTop(data) {
@@ -159,8 +182,9 @@ Component({
       })
 
       this.animate('#tt-evts-detail', [
-        { opacity: 0, bottom: "-2000px", ease: "ease-in-out" },
-        { opacity: 1, bottom: "0px", ease: "ease-in-out" },
+        { opacity: 0,  bottom: "-2000px", ease: "ease-in-out" },
+        { opacity: 1, scale: [0.96, 0.96], bottom: "0px", ease: "ease-in-out" },
+        { scale: [1, 1], ease: "ease-in-out" },
       ], aniSpeed, function () {
         this.clearAnimation('#tt-evts-detail', { }, function () {
 
@@ -182,7 +206,8 @@ Component({
     closeDetail(){
       const aniSpeed = this.data.aniSpeed
       this.animate('#tt-evts-detail', [
-        { opacity: 1, bottom: "0px", ease: "ease-in-out" },
+        { scale: [1, 1], ease: "ease-in-out" },
+        { opacity: 1, scale: [0.96, 0.96], bottom: "0px", ease: "ease-in-out" },
         { opacity: 0, bottom: "-2000px", ease: "ease-in-out" },
       ], aniSpeed, function () {
         this.clearAnimation('#tt-evts-detail', {}, function () {
@@ -280,5 +305,5 @@ Component({
     }
 
     
-  },
+  }
 })

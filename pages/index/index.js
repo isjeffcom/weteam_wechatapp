@@ -196,6 +196,12 @@ Page({
     }
   },
 
+  toTerms: function(){
+    wx.navigateTo({
+      url: '/pages/terms/terms',
+    })
+  },
+
   navByStatus: function (status) {
     
 

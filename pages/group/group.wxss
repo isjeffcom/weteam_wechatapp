@@ -1,6 +1,6 @@
 /* pages/team/team.wxss */
 #all{
-  margin-top: 200rpx;
+  margin-top: 205rpx;
 }
 
 .guide{

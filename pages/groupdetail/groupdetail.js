@@ -9,6 +9,7 @@ Page({
     gid: "",
     gname: "",
     gcode: "",
+    gopen: true,
     memImgs: [],
     allTTData: [],
     currentEvtArr: [],
@@ -24,14 +25,22 @@ Page({
       gid: this.options.gid,
       gname: this.options.gname,
       gcode: this.options.code,
+      gopen: parseInt(this.options.open) == 1 ? true : false,
       titleNav: this.options.join == 't' ? 'home' : 'back'
     })
+
   },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
+    if(this.data.gopen == false){
+      wx.hideShareMenu()
+    }
 
     // Check if already logged
     var check = util.checkLogin()
@@ -162,5 +171,7 @@ Page({
         this.renderDayEvt()
       }
     })
+
+    
   }
 })
