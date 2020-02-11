@@ -84,6 +84,7 @@
 
       <!-- WEEK VIEW START -->
       <swiper 
+        wx:if="{{ currentView == 'week' }}"
         class="calendar-week-swiper"
         current="{{ currentWeekCount }}"
         duration="300"

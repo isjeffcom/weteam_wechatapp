@@ -86,7 +86,7 @@
 					"id": 4,
 					"name": "pages/groupdetail/groupdetail",
 					"pathName": "pages/groupdetail/groupdetail",
-					"query": "gid=26&code=1018&uids=10,12&gname=DMSP Group",
+					"query": "gid=26&code=1018&uids=10,20,21&gname= Dynamic Web Design&open=1",
 					"scene": null
 				},
 				{

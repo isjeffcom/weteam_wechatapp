@@ -6,15 +6,19 @@ Page({
   data: {
     api: "/group/tts",
     api_imgs: "/user/imgs",
+    api_tasks: "/tasks/all",
+    tab: 1,
     gid: "",
     gname: "",
     gcode: "",
     gopen: true,
     memImgs: [],
     allTTData: [],
+    allTasksData: [],
     currentEvtArr: [],
     currentView: "week",
-    titleNav: 'back'
+    titleNav: 'back',
+    tabItems: ["日程", "任务"],
   },
 
   /**
@@ -64,6 +68,7 @@ Page({
       return
     }
 
+    // Get Cached Timetable Data
     var tryGetGTT = util.getGTT(this.data.gid)
     if (tryGetGTT) {
       this.setData({
@@ -71,10 +76,41 @@ Page({
       })
     }
 
+    // Get Cached Tasks Data
+    var tryGetGTasks = util.getGTTasks(this.data.gid)
+    if (tryGetGTasks) {
+      this.setData({
+        allTasksData: tryGetGTasks
+      })
+    }
+
     this.renderDayEvt()
     this.update()
     this.getImgs()
 
+    this.getTastsData()
+
+  },
+
+  getTastsData() {
+    var that = this
+    var postData = {
+      gid: this.data.gid
+    }
+
+    console.log(postData)
+
+    request.genPost(this.data.api_tasks, postData, (res) => {
+      if (res.status) {
+        this.setData({
+          allTasksData: res.data.data
+        })
+        //this.renderDayEvt(that.calendar.getSelectedDay())
+        var getData = wx.setStorageSync('data_gta_' + this.data.gid, res.data.data)
+
+        console.log(res.data)
+      }
+    })
   },
 
   getImgs(){
@@ -136,6 +172,13 @@ Page({
       return { status: false, count: 0, data: "no timetable data, try to get data" }
     }
 
+  },
+
+  tabSwitched(e){
+    this.setData({
+      tab: e.detail.tabCurrent
+    })
+    console.log(e.detail.tabCurrent)
   },
 
   // Share Mini App

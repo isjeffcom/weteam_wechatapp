@@ -1,3 +1,5 @@
+
+
 .group-info{
   position: fixed;
   height: 120rpx;
@@ -104,5 +106,9 @@
 
 .cal-view-switcher-icon{
   width: 100%;
+}
+
+.ta-cont{
+  margin-top: 290rpx;
 }
 

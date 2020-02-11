@@ -2,6 +2,8 @@
   "usingComponents": {
     "ncalendar": "/component/ncalendar/ncalendar",
     "timetable": "/component/timetable/timetable",
-    "titlebar": "/component/titlebar/titlebar"
+    "titlebar": "/component/titlebar/titlebar",
+    "buttontab": "/component/tab/tab",
+    "tasklist": "/component/tasklist/tasklist"
   }
 }

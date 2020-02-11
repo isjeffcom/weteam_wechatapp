@@ -103,9 +103,9 @@ Page({
       return
     }
 
-    if(this.data.groupName.length > 18){
+    if(this.data.groupName.length > 32){
       wx.showToast({
-        title: '小组名称不能超过9个中文或18个英文',
+        title: '小组名称不能超过16个中文或32个英文',
         icon: "none",
       })
       return

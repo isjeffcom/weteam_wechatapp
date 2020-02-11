@@ -1,0 +1,26 @@
+/* component/tab/tab.wxss */
+.tab{
+  position: fixed;
+  bottom: 0rpx;
+  height: 70rpx;
+  width: 100%;
+  background: rgba(255,255,255,1);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 24rpx;
+  z-index: 999;
+}
+
+.tab-inner{
+  display: flex;
+}
+
+.tab-single-indi{
+  width: 100%;
+  height: 6rpx;
+  position: absolute;
+  margin-top: -25rpx;
+}
+
+.tab-single{
+  text-align: center;
+}

@@ -1,0 +1,177 @@
+/* component/tasklist/tasklist.wxss */
+
+.task-list{
+  width: 100%;
+  height: 100%;
+}
+
+.task-list-cont{
+  width: 100%;
+  height: 100%;
+}
+
+.task-single{
+  width: 90%;
+  height: 110rpx;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40rpx;
+  border-radius: 4rpx;
+  
+}
+
+.task-single-inner{
+  display: flex;
+  height: 100%;
+}
+
+.task-single-indi{
+  height: 100%;
+  width: 8rpx;
+}
+
+.task-single-des{
+  padding-top: 30rpx;
+  padding-left: 30rpx;
+}
+
+.task-single-tick{
+  height: 100%;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+}
+
+.task-single-tick-circle{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100rpx;
+  border: 4rpx solid rgba(0,0,0,0.3);
+}
+
+.tasks-done{
+  opacity: 0;
+  height: 0rpx;
+}
+
+.title{
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.title-left{
+  margin-left: 32rpx;
+}
+
+.title-text{
+  font-weight: bold;
+}
+
+.title-text-1{
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.title-text-3{
+  font-size: 14px;
+  opacity: .5;
+}
+
+.title-right{
+  position: absolute;
+  margin-top: -32px;
+  right: 20px;
+}
+
+.title-right text{
+  color: #0277F9;
+}
+
+.title-right text:active{
+  color: #006BE2;
+}
+
+.title-arrow-expand-image{
+  width: 40rpx;
+}
+
+.tasks-cover{
+  position: fixed;
+  background: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  overflow: hidden;
+  top: 0px;
+  opacity: 0;
+}
+
+.tasks-new{
+  position: fixed;
+  bottom: -2000rpx;
+  width: 100%;
+  z-index: 9999;
+}
+
+.tasks-new-inner{
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  height: 600rpx;
+  width: 100%;
+  background: rgba(255,255,255,1);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-top-left-radius:24px;
+  border-top-right-radius:24px;
+  border-bottom-right-radius:0px;
+  border-bottom-left-radius:0px;
+}
+
+.tasks-cont{
+  margin-top: 40rpx;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tasks-new-title{
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.tasks-new-btn{
+  position: absolute;
+  width: 100%;
+  bottom: 40rpx;
+}
+
+.tasks-new-des{
+  margin-top: 40rpx;
+}
+
+.tasks-new-endDate{
+  margin-top: 60rpx;
+}
+
+.tasks-new-endDate-picker{
+  opacity: 0.3;
+}
+
+
+
+.tasks-new-close{
+  width: 100%;
+  position: absolute;
+  bottom: 600rpx;
+}
+
+.tasks-new-close-icon{
+  position: absolute;
+  right: 20rpx;
+  margin-top: 40rpx;
+}
+
+.tasks-new-close-icon-img{
+  width: 70rpx;
+  height: 70rpx;
+}

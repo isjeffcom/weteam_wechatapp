@@ -46,7 +46,7 @@
     </view>
   </view>
 
-  <view class="cal-cont">
+  <view class="cal-cont" hidden="{{ tab == 0 ? false : true }}">
 
     <ncalendar 
       initView="week" 
@@ -57,13 +57,19 @@
     
   </view>
 
-  <view class="tt-cont">
+  <view class="tt-cont" hidden="{{ tab == 0 ? false : true }}">
     <timetable
       events="{{ currentEvtArr }}"
       memsImg="{{ memImgs }}"
       hasMems="t">
     </timetable>
   </view>
+
+  <view class="ta-cont" hidden="{{ tab == 1 ? false : true}}">
+    <tasklist tasksData="{{allTasksData}}"></tasklist>
+  </view>
+
+  <buttontab items="{{tabItems}}" bind:switchtab="tabSwitched" defaultTab="{{ tab }}"></buttontab>
 
 
 </view>

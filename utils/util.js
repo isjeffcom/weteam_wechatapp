@@ -88,6 +88,15 @@ function getGTT(gid){
   }
 }
 
+function getGTTasks (gid) {
+  var tt = wx.getStorageSync("data_gta_" + gid)
+  if (tt) {
+    return tt
+  } else {
+    return false
+  }
+}
+
 function getName(){
   var tt = wx.getStorageSync("data_n")
   if (tt) {
@@ -234,6 +243,7 @@ module.exports = {
   getUUID: getUUID,
   getTT: getTT,
   getGTT: getGTT,
+  getGTTasks: getGTTasks,
   getName: getName,
   getImg: getImg,
   getAccInfo: getAccInfo,

@@ -1,0 +1,144 @@
+<!--component/tasklist/tasklist.wxml-->
+<scroll-view class="task-list" style="height: {{screenHeight - 150}}px;" scroll-y>
+
+  <view class="title">
+
+    <view class="title-left">
+      <text class="title-text-1">小组任务</text>
+    </view>
+
+    <view class="title-right">
+      <text class="title-text-add" bindtap="openTaskWindow">+新建</text>
+    </view>
+  
+  </view>
+
+  <view class="task-list-cont">
+
+    <view class="cont-title">
+      <text class="title-text-3">未完成</text>
+    </view>
+
+    <view 
+      class="task-single"
+      scroll-x="true"
+      wx:for="{{doing}}"
+      wx:for-item="item"
+      wx:for-index="idx"
+      wx:key="idx"
+      data-tid="{{item.id}}">
+
+      <view class="task-single-inner">
+
+        <view class="task-single-indi" style="background:{{item.color ? item.color : 'rgba(0,0,0,0.3)'}};">
+        </view>
+
+        <view class="task-single-tick">
+          <view class="task-single-tick-circle">
+          </view>
+        </view>
+
+        <view class="task-single-des">
+          <text>{{item.des}}</text>
+        </view>
+
+      </view>
+
+    </view>
+
+  
+
+    <view class="cont-title">
+      <text class="title-text-3">已完成</text>
+
+      <view class="title-right">
+        <view class="title-arrow-expand" id="expand" bindtap="expandDone" style="transform: rotate(270deg)">
+          <image class="title-arrow-expand-image" src="./assets/arrow.svg" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+
+
+    <view id="tasks-done" class="tasks-done">
+      <view 
+        class="task-single"
+        scroll-x="true"
+        wx:for="{{done}}"
+        wx:for-item="item"
+        wx:for-index="idx"
+        wx:key="idx"
+        data-tid="{{item.id}}">
+
+        <view class="task-single-inner">
+
+          <view class="task-single-indi" style="background:{{item.color ? item.color : 'rgba(0,0,0,0.3)'}};">
+          </view>
+
+          <view class="task-single-tick">
+            <view class="task-single-tick-circle">
+            </view>
+          </view>
+
+          <view class="task-single-des">
+            <text>{{item.des}}</text>
+          </view>
+
+        </view>
+
+      </view>
+
+    </view>
+    
+
+  </view>
+
+</scroll-view>
+
+<view class="tasks-cover" id="tasks-cover" bindtap="closeTaskWindow" wx:if="{{tasksNewOpen}}"></view>
+
+<view class="tasks-new" id="tasks-new">
+
+    
+    <view class="tasks-new-inner" id="tasks-new-inner">
+
+      <view class="tasks-cont">
+        <view class="tasks-new-title">
+          <text>添加新任务</text>
+        </view>
+
+        <view class="tasks-new-des">
+          <input placeholder="任务描述" bindinput="newTaskName"></input>
+        </view>
+
+        <view class="tasks-new-endDate">
+          <picker mode="date" bindchange="newDate">
+            <view class="tasks-new-endDate-picker" wx:if="{{!formEndDate}}">
+              + 添加结束时间(可选)
+            </view>
+
+            <view class="tasks-new-endDate-picker" wx:if="{{formEndDate}}">
+              结束时间: {{formEndDate}}
+            </view>
+          </picker>
+        </view>
+
+        
+      </view>
+
+      <view class="tasks-new-btn">
+        <button bindtap="submitNew">添加</button>
+      </view>
+      
+    </view>
+
+    
+
+    <!-- Close Btn -->
+    <view class="tasks-new-close" bindtap="closeTaskWindow">
+
+      <view class="tasks-new-close-icon">
+        <image class="tasks-new-close-icon-img" src="./assets/close.svg"></image>
+      </view>
+      
+    </view>
+  </view>
