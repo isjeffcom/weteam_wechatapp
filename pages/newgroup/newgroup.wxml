@@ -2,64 +2,70 @@
 <titlebar mode="side" position="relative" color="#ffffff" heightOffset="30" nav="back"></titlebar>
 <view id="all">
 
-  <view class="newg-title">
+  <view class="newg-cont">
+  
+    <view class="newg-title">
 
-    <view class="newg-title-left">
-      <text class="title-text-1">创建小组</text>
+      <view class="newg-title-left">
+        <text class="title-text-1">创建小组</text>
+      </view>
+
     </view>
 
-  </view>
 
+    <view class="name-cont">
+      <input placeholder="请输入小组名称" type="text" bindinput="inpName"/>
+      <text wx:if="{{ nameAlert }}" style="color: #ff0000">1-12位中英文和数字</text>
+    </view>
 
-  <view class="name-cont">
-    <input placeholder="请输入小组名称" type="text" bindinput="inpName"/>
-    <text wx:if="{{ nameAlert }}" style="color: #ff0000">1-12位中英文和数字</text>
-  </view>
-
-  <view class="members-cont">
-    
-    <view 
-      wx:for="{{ members }}" 
-      wx:for-index="idx"
-      wx:for-item="item" 
-      data-id="{{item.id}}"
-      bindtap="removeMember"
-      class="team-single">
+    <!--view class="members-cont">
       
-      <view class="members-img">
-        <image src="{{ item.img }}" mode="aspectFill"></image>
+      <view 
+        wx:for="{{ members }}" 
+        wx:for-index="idx"
+        wx:for-item="item" 
+        data-id="{{item.id}}"
+        bindtap="removeMember"
+        class="team-single">
+        
+        <view class="members-img">
+          <image src="{{ item.img }}" mode="aspectFill"></image>
+        </view>
+
+        <view class="members-name">
+          <text>{{item.name}}</text>
+        </view>
+
       </view>
 
-      <view class="members-name">
-        <text>{{item.name}}</text>
+      <view class="members-add" bindtap="tapToOverlay">
+        <view class="members-add-text"> + 添加小组成员</view>
       </view>
+    </view-->
 
+    <view class="title-text-3" style="margin-top: 40rpx;">
+      <text>建立小组后分享到微信群，邀请成员加入</text>
     </view>
 
-    <view class="members-add" bindtap="tapToOverlay">
-      <view class="members-add-text"> + 添加小组成员</view>
+    <view class="form-submit" style="width: 93%">
+      <view 
+        class="form-submit-btn" 
+        style="background: {{ btn_style }}" 
+        bindtap="submit">
+        创建
+      </view>
     </view>
+
+    <!--view id="searchOverlay" wx:if="{{searchOverlay}}">
+      <search
+        bind:close="tapCloseOverlay"
+        bind:selected="addMember"
+      ></search>
+    </view-->
+
   </view>
 
-  <view class="title-text-3" style="margin-top: 40rpx;">
-    <text>稍后群邀请组员加入更方便</text>
-  </view>
-
-  <view class="form-submit">
-    <view 
-      class="form-submit-btn" 
-      style="background: {{ btn_style }}" 
-      bindtap="submit">
-      创建
-    </view>
-  </view>
-
-  <view id="searchOverlay" wx:if="{{searchOverlay}}">
-    <search
-      bind:close="tapCloseOverlay"
-      bind:selected="addMember"
-    ></search>
-  </view>
+  
   
 
 </view>

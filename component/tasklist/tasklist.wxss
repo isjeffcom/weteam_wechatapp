@@ -10,20 +10,25 @@
   height: 100%;
 }
 
+.notasks{
+  width: 100%;
+  text-align: center;
+  opacity: 0.5;
+}
+
 .task-single{
   width: 90%;
-  height: 110rpx;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40rpx;
   border-radius: 4rpx;
-  
+  border: 2rpx solid rgba(0,0,0,0.03);
 }
 
 .task-single-inner{
-  display: flex;
   height: 100%;
+  display: flex;
 }
 
 .task-single-indi{
@@ -32,14 +37,30 @@
 }
 
 .task-single-des{
-  padding-top: 30rpx;
+  width: 74%;
+  padding-top: 32rpx;
   padding-left: 30rpx;
+}
+
+.tasks-single-edit{
+  
+  margin-top: 36rpx;
+}
+
+.tasks-single-edit-img{
+  width: 40rpx;
+  opacity: 0.45;
 }
 
 .task-single-tick{
   height: 100%;
   margin-top: 30rpx;
   margin-left: 30rpx;
+}
+
+.task-single-tick-img{
+  width: 40rpx;
+  opacity: 0.3;
 }
 
 .task-single-tick-circle{
@@ -49,8 +70,20 @@
   border: 4rpx solid rgba(0,0,0,0.3);
 }
 
+.task-single-end{
+  width: 100%;
+  border-top: 2rpx solid rgba(0,0,0,0.05);
+  margin-top: -74rpx;
+  font-size: 24rpx;
+}
+
+.task-single-end-inner{
+  margin-left: 40rpx;
+  margin-top: 16rpx;
+}
+
 .tasks-done{
-  opacity: 0;
+  opacity: 1;
   height: 0rpx;
 }
 
@@ -79,8 +112,13 @@
 
 .title-right{
   position: absolute;
-  margin-top: -32px;
-  right: 20px;
+  margin-top: -58rpx;
+  right: 28rpx;
+}
+
+.cont-title{
+  margin-left: 40rpx;
+  margin-bottom: 20rpx;
 }
 
 .title-right text{
@@ -108,7 +146,7 @@
 
 .tasks-new{
   position: fixed;
-  bottom: -2000rpx;
+  bottom: -1000rpx;
   width: 100%;
   z-index: 9999;
 }
@@ -117,7 +155,7 @@
   position: absolute;
   bottom: 0rpx;
   left: 0rpx;
-  height: 600rpx;
+  height: 700rpx;
   width: 100%;
   background: rgba(255,255,255,1);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -128,7 +166,7 @@
 }
 
 .tasks-cont{
-  margin-top: 40rpx;
+  margin-top: 50rpx;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -146,7 +184,7 @@
 }
 
 .tasks-new-des{
-  margin-top: 40rpx;
+  margin-top: 50rpx;
 }
 
 .tasks-new-endDate{
@@ -157,12 +195,11 @@
   opacity: 0.3;
 }
 
-
-
 .tasks-new-close{
   width: 100%;
   position: absolute;
-  bottom: 600rpx;
+  bottom: 695rpx;
+  right: 10rpx;
 }
 
 .tasks-new-close-icon{
@@ -174,4 +211,21 @@
 .tasks-new-close-icon-img{
   width: 70rpx;
   height: 70rpx;
+}
+
+.tasks-new-color{
+  margin-top: 50rpx;
+}
+
+.tasks-new-label-picker{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+}
+
+.tasks-label-s{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  border-radius: 8rpx;
 }

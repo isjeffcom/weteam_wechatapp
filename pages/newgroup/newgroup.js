@@ -111,7 +111,14 @@ Page({
       return
     }
 
-    var groupName = util.removeEmoji(this.data.groupName)
+    // Detect Emoji
+    if (util.searchEmoji(this.data.groupName) != -1){
+      wx.showToast({
+        title: '名称中不能包含Emoji表情',
+        icon: "none",
+      })
+      return
+    }
 
     wx.showLoading({
       title: '正在创建',
@@ -126,7 +133,7 @@ Page({
     var postReady = {
       uuid: util.getUUID(),
       token: util.getToken(),
-      n: groupName,
+      n: this.data.groupName,
       m: String(mems)
     }
 

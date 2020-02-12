@@ -1,0 +1,32 @@
+
+function due(val){
+
+  var today = getDate()
+  var target = getDate(val)
+
+  if(target - today > 0){
+    // 没过期
+    return true
+  } else {
+    // 过期了
+    return false
+  }
+  
+  
+  //var today = d.getFullYear() + "-" + addZero(d.getMonth() + 1) + "-" + d.getDate()
+  //console.log(d.getTime())
+  //return "#000000";
+}
+
+function addZero (val) {
+  if(val < 10){
+    return "0" + val
+  }
+  return val
+}
+
+
+
+module.exports = {
+  due: due
+};

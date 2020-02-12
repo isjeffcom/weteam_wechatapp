@@ -1,5 +1,6 @@
+<wxs src="./deadline.wxs" module="deadline" />
 <!--component/tasklist/tasklist.wxml-->
-<scroll-view class="task-list" style="height: {{screenHeight - 150}}px;" scroll-y>
+<scroll-view class="task-list" scroll-y scroll-anchoring>
 
   <view class="title">
 
@@ -13,27 +14,27 @@
   
   </view>
 
-  <view class="task-list-cont">
+  <view class="task-list-cont" wx:if="{{doing.length > 0 || done.length > 0}}">
 
     <view class="cont-title">
       <text class="title-text-3">未完成</text>
     </view>
 
     <view 
-      class="task-single"
-      scroll-x="true"
       wx:for="{{doing}}"
       wx:for-item="item"
       wx:for-index="idx"
       wx:key="idx"
-      data-tid="{{item.id}}">
+      data-tid="{{item.id}}"
+      class="task-single doing-{{idx}}"
+      style="height: {{ item.endDate ? '180' : '110' }}rpx;">
 
       <view class="task-single-inner">
 
-        <view class="task-single-indi" style="background:{{item.color ? item.color : 'rgba(0,0,0,0.3)'}};">
+        <view class="task-single-indi" style="background:{{item.color ? item.color : 'rgba(0,0,0,0.1)'}};">
         </view>
 
-        <view class="task-single-tick">
+        <view class="task-single-tick" data-id="{{item.id}}" data-i="{{idx}}" data-e="{{ item.endDate }}" bindtap="toDone">
           <view class="task-single-tick-circle">
           </view>
         </view>
@@ -42,6 +43,16 @@
           <text>{{item.des}}</text>
         </view>
 
+        <view class="tasks-single-edit" bindtap="editTask" data-s="{{item}}">
+          <image class="tasks-single-edit-img" src="./assets/edit.svg" mode="widthFix"></image>
+        </view>
+
+      </view>
+
+      <view class="task-single-end" wx:if="{{item.endDate}}">
+        <view class="task-single-end-inner">
+          <text style="color: {{ deadline.due(item.endDate) ? '#000000' : '#F24C4C'}}; opacity: {{ deadline.due(item.endDate) ? '0.5' : '1' }}">截止日期: {{item.endDate}}</text>
+        </view>
       </view>
 
     </view>
@@ -52,7 +63,7 @@
       <text class="title-text-3">已完成</text>
 
       <view class="title-right">
-        <view class="title-arrow-expand" id="expand" bindtap="expandDone" style="transform: rotate(270deg)">
+        <view class="title-arrow-expand" id="expand" bindtap="expandDone" style="transform: rotate(360deg)">
           <image class="title-arrow-expand-image" src="./assets/arrow.svg" mode="widthFix"></image>
         </view>
       </view>
@@ -61,35 +72,48 @@
 
     <view id="tasks-done" class="tasks-done">
       <view 
-        class="task-single"
-        scroll-x="true"
         wx:for="{{done}}"
         wx:for-item="item"
         wx:for-index="idx"
         wx:key="idx"
-        data-tid="{{item.id}}">
+        class="task-single done-{{idx}}"
+        data-tid="{{item.id}}"
+        style="height: {{ item.endDate ? '180' : '110' }}rpx;">
 
         <view class="task-single-inner">
 
-          <view class="task-single-indi" style="background:{{item.color ? item.color : 'rgba(0,0,0,0.3)'}};">
+          <view class="task-single-indi" style="background:{{item.color ? item.color : 'rgba(0,0,0,0.1)'}};">
           </view>
 
-          <view class="task-single-tick">
-            <view class="task-single-tick-circle">
-            </view>
+          <view class="task-single-tick" style="margin-top: 34rpx;" data-id="{{item.id}}" data-i="{{idx}}" data-e="{{ item.endDate }}" bindtap="toDoing">
+            <image class="task-single-tick-img" src="./assets/finish.svg" mode="widthFix"></image>
           </view>
 
           <view class="task-single-des">
             <text>{{item.des}}</text>
           </view>
 
+          <view class="tasks-single-edit" bindtap="delTask" data-id="{{item.id}}" data-i="{{idx}}">
+            <image class="tasks-single-edit-img" src="./assets/del.svg" mode="widthFix"></image>
+          </view>
+
         </view>
+
+        <view class="task-single-end" wx:if="{{item.endDate}}">
+        <view class="task-single-end-inner">
+          <text style="color: {{ deadline.due(item.endDate) ? '#000000' : '#F24C4C'}}; opacity: {{ deadline.due(item.endDate) ? '0.5' : '1' }}">截止日期: {{item.endDate}}</text>
+        </view>
+      </view>
 
       </view>
 
     </view>
     
 
+  </view>
+
+  <view class="notasks" wx:else>
+    <text>没有任务，去新建一个吧</text>
   </view>
 
 </scroll-view>
@@ -107,7 +131,7 @@
         </view>
 
         <view class="tasks-new-des">
-          <input placeholder="任务描述" bindinput="newTaskName"></input>
+          <input placeholder="任务描述" value="{{formDes}}" bindinput="newTaskName"></input>
         </view>
 
         <view class="tasks-new-endDate">
@@ -117,16 +141,36 @@
             </view>
 
             <view class="tasks-new-endDate-picker" wx:if="{{formEndDate}}">
-              结束时间: {{formEndDate}}
+              结束时间: {{selectedDate}}
             </view>
           </picker>
+        </view>
+
+        <view class="tasks-new-color">
+
+          <view class="tasks-new-endDate-picker" wx:if="{{!formColor}}" bindtap="newColor">
+            + 添加颜色标签(可选)
+          </view>
+
+          <view class="tasks-new-label-picker" wx:if="{{formColor}}">
+            <view 
+              class="tasks-label-s" 
+              wx:for="{{labelColors}}" 
+              wx:for-item="item" 
+              wx:for-index="idx" 
+              wx:key="idx"
+              data-c="{{item}}"
+              style="background: {{item}}; border: {{item == selectedLabel ? '6rpx solid #333' : '6rpx solid rgba(0,0,0,0)'}}"
+              bindtap="selectLabel"></view>
+          </view>
+
         </view>
 
         
       </view>
 
       <view class="tasks-new-btn">
-        <button bindtap="submitNew">添加</button>
+        <button bindtap="submitNew" style="background: {{formCanSubmit ? btn_able : btn_disable}}">保存</button>
       </view>
       
     </view>

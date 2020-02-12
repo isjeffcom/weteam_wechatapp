@@ -65,8 +65,8 @@
     </timetable>
   </view>
 
-  <view class="ta-cont" hidden="{{ tab == 1 ? false : true}}">
-    <tasklist tasksData="{{allTasksData}}"></tasklist>
+  <view class="ta-cont" hidden="{{ tab == 1 ? false : true}}" style="height: {{ screenHeight - 200}}px;">
+    <tasklist gid="{{gid}}"></tasklist>
   </view>
 
   <buttontab items="{{tabItems}}" bind:switchtab="tabSwitched" defaultTab="{{ tab }}"></buttontab>

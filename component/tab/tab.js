@@ -27,8 +27,7 @@ Component({
     this.setData({
       tabCurrent: parseInt(this.data.defaultTab)
     })
-    
-    console.log(this.data.tabCurrent)
+
   },
 
   /**
@@ -43,7 +42,6 @@ Component({
    */
   methods: {
     select(e){
-
       this.setData({
         tabCurrent: e.currentTarget.dataset.i
       })
