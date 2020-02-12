@@ -58,7 +58,7 @@ Component({
     memsAvas: Array,
     hMems: true,
     startAniDone: false,
-    aniSpeed: 540
+    aniSpeed: 640
   },
 
   ready: function (e) {
@@ -182,7 +182,7 @@ Component({
       })
 
       this.animate('#tt-evts-detail', [
-        { opacity: 0,  bottom: "-2000px", ease: "ease-in-out" },
+        { opacity: 0,  bottom: "-1000px", ease: "ease-in-out" },
         { opacity: 1, scale: [0.96, 0.96], bottom: "0px", ease: "ease-in-out" },
         { scale: [1, 1], ease: "ease-in-out" },
       ], aniSpeed, function () {
@@ -208,7 +208,7 @@ Component({
       this.animate('#tt-evts-detail', [
         { scale: [1, 1], ease: "ease-in-out" },
         { opacity: 1, scale: [0.96, 0.96], bottom: "0px", ease: "ease-in-out" },
-        { opacity: 0, bottom: "-2000px", ease: "ease-in-out" },
+        { opacity: 0, bottom: "-1000px", ease: "ease-in-out" },
       ], aniSpeed, function () {
         this.clearAnimation('#tt-evts-detail', {}, function () {
 

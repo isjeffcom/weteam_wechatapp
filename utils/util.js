@@ -219,7 +219,12 @@ function whereInArr(target, arr){
 }
 
 function removeEmoji(str){
-  return str.replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g, "")
+  return str.replace(/[^\u4e00-\u9fa5a-zA-Z0-9\s+]/g, "")
+}
+
+function searchEmoji(str){
+  const patt = /[^\u4e00-\u9fa5a-zA-Z0-9\s+]/g
+  return str.search(patt, str)
 }
 
 function logout(){
@@ -257,5 +262,6 @@ module.exports = {
   checkInput: checkInput,
   checkInputNumOnly: checkInputNumOnly,
   constURLParam: constURLParam,
-  removeEmoji: removeEmoji
+  removeEmoji: removeEmoji,
+  searchEmoji: searchEmoji
 }

@@ -98,7 +98,7 @@
 
 .tt-evts-detail{
   position: fixed;
-  bottom: -2000rpx;
+  bottom: -1000rpx;
   width: 100%;
   z-index: 9999;
 }

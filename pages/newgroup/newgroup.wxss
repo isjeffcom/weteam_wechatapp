@@ -1,7 +1,11 @@
 /* pages/newgroup/newgroup.wxss */
 
-#all{
-  padding: 30rpx;
+
+.newg-cont{
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  width: 90%;
+  overflow: hidden;
 }
 
 input{

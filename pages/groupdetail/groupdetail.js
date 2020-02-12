@@ -7,7 +7,10 @@ Page({
     api: "/group/tts",
     api_imgs: "/user/imgs",
     api_tasks: "/tasks/all",
-    tab: 1,
+    api_tasks_add: "/tasks/add",
+    tab: 0,
+    limit: 100,
+    screenHeight: 0,
     gid: "",
     gname: "",
     gcode: "",
@@ -34,8 +37,6 @@ Page({
     })
 
   },
-
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -68,6 +69,12 @@ Page({
       return
     }
 
+
+    // Get Screen Height
+    this.setData({
+      screenHeight: wx.getSystemInfoSync().windowHeight
+    })
+
     // Get Cached Timetable Data
     var tryGetGTT = util.getGTT(this.data.gid)
     if (tryGetGTT) {
@@ -76,41 +83,10 @@ Page({
       })
     }
 
-    // Get Cached Tasks Data
-    var tryGetGTasks = util.getGTTasks(this.data.gid)
-    if (tryGetGTasks) {
-      this.setData({
-        allTasksData: tryGetGTasks
-      })
-    }
-
     this.renderDayEvt()
     this.update()
     this.getImgs()
 
-    this.getTastsData()
-
-  },
-
-  getTastsData() {
-    var that = this
-    var postData = {
-      gid: this.data.gid
-    }
-
-    console.log(postData)
-
-    request.genPost(this.data.api_tasks, postData, (res) => {
-      if (res.status) {
-        this.setData({
-          allTasksData: res.data.data
-        })
-        //this.renderDayEvt(that.calendar.getSelectedDay())
-        var getData = wx.setStorageSync('data_gta_' + this.data.gid, res.data.data)
-
-        console.log(res.data)
-      }
-    })
   },
 
   getImgs(){
@@ -178,7 +154,6 @@ Page({
     this.setData({
       tab: e.detail.tabCurrent
     })
-    console.log(e.detail.tabCurrent)
   },
 
   // Share Mini App

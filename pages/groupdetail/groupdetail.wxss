@@ -29,7 +29,7 @@
   border-radius: 8rpx !important;
   padding-left: 22rpx;
   padding-right: 22rpx;
-  font-size: 15px;
+  font-size: 30rpx;
 }
 
 .group-info-left{
@@ -109,6 +109,6 @@
 }
 
 .ta-cont{
-  margin-top: 290rpx;
+  margin-top: 285rpx;
 }
 
