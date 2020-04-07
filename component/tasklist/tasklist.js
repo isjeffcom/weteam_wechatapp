@@ -88,8 +88,6 @@ Component({
       request.genPost(this.data.api_all, postData, (res) => {
         if (res.status) {
 
-          console.log(res.data.data)
-
           this.processData(res.data.data)
 
           var getData = wx.setStorageSync('data_gta_' + this.data.gid, res.data.data)
@@ -122,7 +120,6 @@ Component({
 
     editTask(e){
       const target = e.currentTarget.dataset.s
-      console.log(target)
       this.setData({
         editId: target.id,
         formDes: target.des,
@@ -138,12 +135,13 @@ Component({
 
     submitNew(){
 
-      if(this.data.formDes == "" || this.data.formDes.length < 1){
+      if(this.data.formDes == "" || this.data.formDes.length < 1 || this.data.formDes.length > 30){
+        wx.showToast({
+          title: '任务描述字数限制2-30',
+          icon: 'none'
+        })
         return
       }
-
-      console.log(this.data.formEndDate)
-      console.log(this.data.selectedDate)
 
       wx.showLoading({
         title: '正在保存',
@@ -313,7 +311,6 @@ Component({
       }
 
       request.genPost(this.data.api_upState, postReady, (res)=>{
-        console.log(res)
         if(res.status){
           console.log("update state successful")
         } else {

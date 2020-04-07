@@ -84,6 +84,8 @@ Page({
 
         wx.hideLoading()
 
+        console.log(res)
+
         if(res.status){
 
           var saveData = wx.setStorageSync("data_tt", res.data.data)

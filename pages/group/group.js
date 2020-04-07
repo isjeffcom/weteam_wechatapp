@@ -89,8 +89,6 @@ Page({
     }
     request.genPost(this.data.api, postReady, (res) => {
 
-      console.log(res)
-
       if (res.status) {
         
         this.setData({
